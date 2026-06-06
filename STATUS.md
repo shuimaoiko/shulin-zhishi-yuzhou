@@ -75,6 +75,12 @@
 - 思维导图改为更紧凑布局：`left:18%`、`right:30%`、曲线弱化。
 - 2026-06-06 新一轮审美重构方向：从「深色功能页」升级为「知识工作台 / 档案索引台」。优先强化字体层级、面板材质、顶部命令区、左侧来源导航、列表阅读与导图可读性；不引入重动画和大面积装饰，避免再次拖慢交互。
 - Awwwards 案例规范已落为 `DESIGN_SYSTEM.md`：参考 Digital Curator / Histography / The digital Van Gogh Museum，抽取黑底高对比、三色功能锚点、策展式过滤、横向知识探索、低成本微交互等规则，并应用到 `index.html`。
+- **2026-06-06 设计规范统一 → `DESIGN.md`（v1，唯一审美权威，取代 `DESIGN_SYSTEM.md`）**：重新精选 Awwwards 三参考（The Museum of the World / The Graphic Design Archive / Built for Archives），确立「静林档案台」。把 index.html 里历史叠加的**三层 CSS token（星空层 / quiet-workstation 紫调层 / aa-curator 青金层）统一成单一体系**：
+  - 配色：清除蓝紫(periwinkle)发光与星点星空、彩虹分类色；锁定 **青 `#4fb9a9`(当前/焦点/主操作) + 琥珀 `#d8b367`(暖意/高亮) + 珊瑚 `#e98c84`(罕用提醒)** 三功能色；基底改 `#0a0d12` 墨黑。
+  - 系统识别色去饱和为档案色族：知乎 `#7e85ad` / 公众号 `#5fa78f` / B站动态 `#5f9fc4` / B站视频 `#c9a25c` / 对木 `#a07f54`。
+  - 分组彩虹色在**运行时**去饱和 + 向系统色混合 40%（`data.js` 生成物不动）；星点网格压到近无、图谱大网格线中和为中性。
+  - 新增字号/间距/圆角/动效阶梯 token（见 `DESIGN.md` 第 4–8 节）。
+  - 校验：内联 JS 语法通过、结构配平；chrome-devtools 截图前后对照 + `evaluate_script` 程序化确认（蓝紫残留=0、系统色与分组去彩虹色全部落位）。回退用 git（上一提交 fb4a6f0 即改造前版本）。
 
 ## 导图呈现方式
 - 顶部控制从「公众号」改为全局「导图呈现」。
