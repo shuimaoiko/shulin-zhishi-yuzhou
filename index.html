@@ -1107,6 +1107,113 @@
     .brand-meta span:nth-child(5){animation-delay:.12s}
     .brand-meta span:nth-child(6){animation-delay:.15s}
   }
+
+  /* ============================================================
+     v3 · 清爽简洁基线（DESIGN.md §4.2 材质 / §2 原则7）
+     实色面板 + 发丝描边 + 极简阴影；去掉纯装饰的渐变光晕/下划线/网格噪点。
+     系统色竖条/圆点保留（功能 wayfinding）。
+     ============================================================ */
+  :root{ --shadow:0 12px 32px rgba(0,0,0,.34); --shadow-soft:0 6px 18px rgba(0,0,0,.22); }
+
+  /* 背景：去多色角光 + 噪点，回到近平整墨色 */
+  body{ background:#0a0d12; }
+  body::before, body::after{ display:none; }
+  #app{ background:none; }
+
+  /* 顶部命令区：单发丝线，去渐变下划线 / 外发光 / 文字阴影 */
+  header{
+    background:rgba(10,13,18,.92);
+    border-bottom:1px solid var(--hair);
+    box-shadow:none;
+    backdrop-filter:blur(16px);
+  }
+  header::before, header::after{ display:none; }
+  header h1{ text-shadow:none; }
+  /* 统计徽章：统一极简，不再首/次格特殊渐变、不逐格动画 */
+  .brand-meta span,
+  .brand-meta span:first-child,
+  .brand-meta span:nth-child(2){
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--hair);
+    color:var(--dim);
+    box-shadow:none;
+    animation:none;
+  }
+
+  /* 搜索：实色 + 细环，去底部渐变线 */
+  .search{ background:rgba(255,255,255,.04); box-shadow:none; }
+  .search::after{ display:none; }
+  .search:focus-within{
+    border-color:rgba(79,185,169,.55);
+    box-shadow:0 0 0 3px rgba(79,185,169,.18);
+  }
+
+  /* 切换器 / 按钮：实色，hover 用底色微提或低饱和青，去渐变厚投影 */
+  .viewmode, .mpmode{ background:rgba(255,255,255,.035); box-shadow:none; backdrop-filter:none; }
+  .viewmode button:hover, .mpmode button:hover{ background:rgba(255,255,255,.06); transform:none; }
+  .viewmode button.active, .mpmode button.active{
+    background:rgba(79,185,169,.16);
+    color:var(--txt);
+    box-shadow:inset 0 0 0 1px rgba(79,185,169,.30);
+    border-color:transparent;
+  }
+  .topbtn{ background:rgba(255,255,255,.045); box-shadow:none; }
+  .topbtn:hover{ background:rgba(79,185,169,.13); border-color:rgba(79,185,169,.42); box-shadow:none; }
+
+  /* 来源导航：实色面板，去径向光 / 厚阴影 / 标题渐变下划线 */
+  #legend{ background:var(--panel); border-right:1px solid var(--hair); box-shadow:none; }
+  .legend-head{ background:var(--panel); backdrop-filter:none; }
+  .legend-head h3::after{ display:none; }
+  .legend-actions button{ background:rgba(255,255,255,.045); box-shadow:none; }
+  .legend-actions button:hover{ background:rgba(79,185,169,.13); border-color:rgba(79,185,169,.4); color:var(--txt); }
+  .sys-chip{
+    background:rgba(255,255,255,.03);
+    box-shadow:none;
+  }
+  .sys-chip:hover{ background:rgba(255,255,255,.055); border-color:var(--hair); }
+  /* sys-chip::before 系统色竖条保留（wayfinding）*/
+  .chip:hover{ background:rgba(255,255,255,.05); }
+  .chip::before{ display:none; }
+
+  /* 画布：去径向光 / 叠加层，网格只留极弱单层 128px */
+  #chart{
+    background:
+      linear-gradient(rgba(255,255,255,.020) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.020) 1px,transparent 1px),
+      #0a0d12;
+    background-size:128px 128px,128px 128px,100% 100%;
+  }
+  #chart::before{ display:none; }
+
+  /* 缩放控件：实色卡片（属浮层，保留轻阴影）；静默时半透明、悬停实体化，不压画布 */
+  #zoomctl{
+    background:rgba(13,17,24,.86); box-shadow:var(--shadow-soft); backdrop-filter:blur(14px);
+    opacity:.62; transition:opacity .18s ease;
+  }
+  #zoomctl:hover, #zoomctl:focus-within{ opacity:1; }
+  #zoomctl button{ background:rgba(255,255,255,.05); box-shadow:none; }
+  #zoomctl button:hover{ background:rgba(79,185,169,.14); color:var(--txt); border-color:rgba(79,185,169,.34); }
+  #hint{ background:rgba(16,21,29,.94); box-shadow:none; }
+  /* 浮层工具条收纳：动作组(展开/折叠) | 分隔线 | 工具组(重置/帮助) */
+  .zr-div{ flex:0 0 auto; width:1px; height:20px; margin:0 4px; background:var(--hair); }
+  #zoomctl button.txtctl{ background:rgba(255,255,255,.05); }
+  #zoomctl button.iconctl{ flex:0 0 auto; width:34px; min-width:34px; background:transparent; color:var(--muted); border-color:transparent; }
+  #zoomctl button.iconctl:hover{ background:rgba(255,255,255,.06); color:var(--txt); border-color:var(--hair); }
+
+  /* 列表：去标题渐变下划线 / 工具条与卡片渐变底；保留 hover 左细条 */
+  .list-head h2::after{ display:none; }
+  .list-tools{ background:rgba(255,255,255,.03); box-shadow:none; }
+  .list-count{ background:rgba(255,255,255,.035); box-shadow:none; }
+  .result-row{ background:rgba(255,255,255,.028); box-shadow:none; }
+  .result-row:hover{ background:rgba(255,255,255,.055); box-shadow:none; }
+
+  /* 弹窗 / 详情 / 帮助：实色浮层 */
+  .index-dialog, #detail, #helpPanel{
+    background:var(--elev);
+    box-shadow:var(--shadow);
+    backdrop-filter:blur(16px);
+  }
+  .kw-export:hover{ background:rgba(79,185,169,.13); border-color:rgba(79,185,169,.4); color:var(--txt); }
 </style>
 </head>
 <body>
@@ -1119,7 +1226,7 @@
     </div>
     <div class="search"><span class="sicon">⌕</span><input id="q" placeholder="搜索标题 / 关键词…"></div>
     <div class="top-tools">
-      <div class="viewmode" id="viewMode" title="切换内容呈现方式">
+      <div class="viewmode" id="viewMode" title="看哪里：在 导图 / 列表 两种视图间切换">
         <span>视图</span>
         <button class="active" data-view="tree" type="button">导图</button>
         <button data-view="list" type="button">列表</button>
@@ -1182,17 +1289,18 @@
       </section>
     </div>
     <div id="zoomctl">
-      <div class="mpmode" title="思维导图里的内容组织方式；知乎源文件没有逐条发布时间，因此不伪造时间排序">
-        <span>呈现</span>
-        <button class="active" data-mpview="type_time">类型时序</button>
-        <button data-mpview="type">类型</button>
-        <button data-mpview="no_source">不分来源</button>
+      <div class="mpmode" title="怎么排：导图里内容的组织方式 —— 时间序＝按发布时间排列；分组＝按账号/维度细分；合并来源＝跨账号合并只按类型。（知乎无逐条发布时间，不伪造时间排序）">
+        <span>组织</span>
+        <button class="active" data-mpview="type_time" title="按发布时间排列">时间序</button>
+        <button data-mpview="type" title="按账号 / 维度细分分组">分组</button>
+        <button data-mpview="no_source" title="跨账号合并，只按类型">合并来源</button>
       </div>
       <div class="zoom-row">
         <button id="expandAllBtn" class="txtctl" title="展开到分类层">展开</button>
         <button id="collapseAllBtn" class="txtctl" title="折叠当前导图">折叠</button>
-        <button id="zreset" title="重置视图">⟲</button>
-        <button id="helpBtn" title="帮助中心">?</button>
+        <span class="zr-div" aria-hidden="true"></span>
+        <button id="zreset" class="iconctl" title="重置视图">⟲</button>
+        <button id="helpBtn" class="iconctl" title="帮助中心">?</button>
       </div>
     </div>
     <div id="detail">
