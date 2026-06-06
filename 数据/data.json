@@ -1,9 +1,9 @@
 {
  "meta": {
   "title": "树林知识宇宙",
-  "subtitle": "树成林 · 知乎 + 公众号 + B站动态全集",
-  "total": 1198,
-  "crawl_date": "2026-06-04"
+  "subtitle": "树成林 · 知乎 + 公众号 + B站动态 + B站视频全集",
+  "total": 1256,
+  "crawl_date": "2026-06-06"
  },
  "systems": [
   {
@@ -23,6 +23,12 @@
    "name": "B站动态",
    "emoji": "📡",
    "color": "#79B8FF"
+  },
+  {
+   "id": "biliv",
+   "name": "B站视频",
+   "emoji": "🎬",
+   "color": "#E9C46A"
   }
  ],
  "groups": [
@@ -172,6 +178,69 @@
    "name": "文章",
    "emoji": "📰",
    "color": "#67B8A7"
+  },
+  {
+   "id": "bv_study",
+   "sys": "biliv",
+   "name": "学科·工具",
+   "emoji": "📚",
+   "color": "#06A77D"
+  },
+  {
+   "id": "bv_method",
+   "sys": "biliv",
+   "name": "提分·方法",
+   "emoji": "🚀",
+   "color": "#EF476F"
+  },
+  {
+   "id": "bv_exam",
+   "sys": "biliv",
+   "name": "高考·冲刺",
+   "emoji": "🎯",
+   "color": "#4361EE"
+  },
+  {
+   "id": "bv_repeat",
+   "sys": "biliv",
+   "name": "复读·决策",
+   "emoji": "🔁",
+   "color": "#9D4EDD"
+  },
+  {
+   "id": "bv_univ",
+   "sys": "biliv",
+   "name": "大学·未来",
+   "emoji": "🎓",
+   "color": "#7209B7"
+  },
+  {
+   "id": "bv_love",
+   "sys": "biliv",
+   "name": "情感·人际",
+   "emoji": "❤️",
+   "color": "#E63946"
+  },
+  {
+   "id": "bv_mind",
+   "sys": "biliv",
+   "name": "心态·情绪",
+   "emoji": "🧠",
+   "color": "#F77F00"
+  },
+  {
+   "id": "bv_daily",
+   "sys": "biliv",
+   "name": "日常·随笔",
+   "emoji": "🪐",
+   "color": "#8D99AE"
+  },
+  {
+   "id": "bv_life",
+   "sys": "biliv",
+   "name": "人生·认知",
+   "emoji": "🌱",
+   "color": "#588157"
   }
  ],
  "mp_types": [
@@ -22448,6 +22517,1166 @@
    "body": "今天九点b站振宇的直播，老王永远在你的隔壁! 不皮了，振宇很用心准备的大学发展分享，也会对昨天很多我没有讲到的内容进行补充。 怎么样才能尽可能不受学校的专业的限制去提高自己，思维逻辑老王是真的真的真的很强！ 这场直播基本上也是我们这一周很多谈话的精炼，这一路走来跟老王也学到了很多，我觉得今天这场直播你们真的可以好好听一听。",
    "tags": [
     "bili_repost"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_exam",
+   "platform": "B站",
+   "idx": 1,
+   "title": "怕鸡毛高考，我日。疯了，就两千块钱的事情，搞不好就三百块的事。人格独立，精神独立，站他妈起来！",
+   "url": "https://www.bilibili.com/video/BV1GfTuzJEtT",
+   "date": "2025-06-06 19:01",
+   "bvid": "BV1GfTuzJEtT",
+   "likes": 15901,
+   "collects": 0,
+   "comments": 1712,
+   "reposts": 1324,
+   "excerpt": "怕鸡毛高考，我日。疯了，就两千块钱的事情，搞不好就三百块的事。人格独立，精神独立，站他妈起来！ 怕鸡毛高考，我日。 疯了，就两千块钱的事情，搞不好就三百块的事。 人格独立，精神独立，站他妈起来！",
+   "body": "怕鸡毛高考，我日。疯了，就两千块钱的事情，搞不好就三百块的事。人格独立，精神独立，站他妈起来！\n怕鸡毛高考，我日。\n疯了，就两千块钱的事情，搞不好就三百块的事。\n人格独立，精神独立，站他妈起来！",
+   "tags": [
+    "bv_exam"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_exam",
+   "platform": "B站",
+   "idx": 2,
+   "title": "我说你们，就是太给高考脸了",
+   "url": "https://www.bilibili.com/video/BV1BBTtz1Eyr",
+   "date": "2025-06-05 12:37",
+   "bvid": "BV1BBTtz1Eyr",
+   "likes": 7510,
+   "collects": 0,
+   "comments": 1236,
+   "reposts": 1396,
+   "excerpt": "我说你们，就是太给高考脸了",
+   "body": "我说你们，就是太给高考脸了",
+   "tags": [
+    "bv_exam"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_life",
+   "platform": "B站",
+   "idx": 3,
+   "title": "竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生！",
+   "url": "https://www.bilibili.com/video/BV1vv5yzMEt8",
+   "date": "2025-04-21 08:23",
+   "bvid": "BV1vv5yzMEt8",
+   "likes": 534,
+   "collects": 0,
+   "comments": 37,
+   "reposts": 9,
+   "excerpt": "竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生！ 竹杖芒鞋轻胜马，谁怕？ 一蓑烟雨任平生！",
+   "body": "竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生！\n竹杖芒鞋轻胜马，谁怕？\n一蓑烟雨任平生！",
+   "tags": [
+    "bv_life"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_daily",
+   "platform": "B站",
+   "idx": 4,
+   "title": "哈哈哈包场的海底捞就是不一样，看起来很幸福。还希望你们，回到自己生活的时候，能想起来今天的浪漫，积极，乐观，总是向上。",
+   "url": "https://www.bilibili.com/video/BV1jaRWYrEXF",
+   "date": "2025-03-08 17:17",
+   "bvid": "BV1jaRWYrEXF",
+   "likes": 497,
+   "collects": 0,
+   "comments": 19,
+   "reposts": 10,
+   "excerpt": "哈哈哈包场的海底捞就是不一样，看起来很幸福。还希望你们，回到自己生活的时候，能想起来今天的浪漫，积极，乐观，总是向上。 哈哈哈包场的海底捞就是不一样， 看起来很幸福。 还希望你们， 回到自己生活的时候， 能想起来今天的浪漫， 积极，乐观，总是向上。",
+   "body": "哈哈哈包场的海底捞就是不一样，看起来很幸福。还希望你们，回到自己生活的时候，能想起来今天的浪漫，积极，乐观，总是向上。\n哈哈哈包场的海底捞就是不一样，\n看起来很幸福。\n还希望你们，\n回到自己生活的时候，\n能想起来今天的浪漫，\n积极，乐观，总是向上。",
+   "tags": [
+    "bv_daily"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_daily",
+   "platform": "B站",
+   "idx": 5,
+   "title": "哈哈哈包场看哪吒就是爽！祝你们开心！",
+   "url": "https://www.bilibili.com/video/BV1KG9SY4EgT",
+   "date": "2025-03-07 14:31",
+   "bvid": "BV1KG9SY4EgT",
+   "likes": 329,
+   "collects": 0,
+   "comments": 19,
+   "reposts": 8,
+   "excerpt": "哈哈哈包场看哪吒就是爽！祝你们开心！ 哈哈哈包场看哪吒就是爽！ 祝你们开心！",
+   "body": "哈哈哈包场看哪吒就是爽！祝你们开心！\n哈哈哈包场看哪吒就是爽！\n祝你们开心！",
+   "tags": [
+    "bv_daily"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_study",
+   "platform": "B站",
+   "idx": 6,
+   "title": "约等于“合法作弊”：这套高中生的DeepSeek内卷方案",
+   "url": "https://www.bilibili.com/video/BV1iLAgeWEbP",
+   "date": "2025-02-16 01:40",
+   "bvid": "BV1iLAgeWEbP",
+   "likes": 34996,
+   "collects": 0,
+   "comments": 1575,
+   "reposts": 8594,
+   "excerpt": "约等于“合法作弊”：这套高中生的DeepSeek内卷方案 恭喜高三的所有学生，你们马上100天之后，可以一天24小时全情感受这个软件。 也恭喜高一高二的所有学生，你们可以完全体验，用deepseek自学的所有快乐，教育平权的时代开始了。 至于那些，ai是不是要取代人类，ai什么时候超过人类，ai超过人类之后我们的意义是",
+   "body": "约等于“合法作弊”：这套高中生的DeepSeek内卷方案\n恭喜高三的所有学生，你们马上100天之后，可以一天24小时全情感受这个软件。\n也恭喜高一高二的所有学生，你们可以完全体验，用deepseek自学的所有快乐，教育平权的时代开始了。\n至于那些，ai是不是要取代人类，ai什么时候超过人类，ai超过人类之后我们的意义是什么，教育的意义是什么，不重要。\n我们都在时代中，每个时代也必然会有每个时代的解法，\n人生一定有解。\n但有一个东西可以确认，只是在人类层面，会使用ai的人，会吊打不会使用ai的人。\n所以，无论你是用它自学，还是用它探索人生意义，问哲学，问意义，问ai到底怎么发展。\n你都必须要使用他！",
+   "tags": [
+    "bv_study"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_life",
+   "platform": "B站",
+   "idx": 7,
+   "title": "人生不过百年，永远尽兴！",
+   "url": "https://www.bilibili.com/video/BV14oBFYEEGH",
+   "date": "2024-12-15 20:30",
+   "bvid": "BV14oBFYEEGH",
+   "likes": 841,
+   "collects": 0,
+   "comments": 66,
+   "reposts": 33,
+   "excerpt": "人生不过百年，永远尽兴！",
+   "body": "人生不过百年，永远尽兴！",
+   "tags": [
+    "bv_life"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_love",
+   "platform": "B站",
+   "idx": 8,
+   "title": "爱在日落黄昏时。",
+   "url": "https://www.bilibili.com/video/BV1aw4m1m7gm",
+   "date": "2024-04-16 10:57",
+   "bvid": "BV1aw4m1m7gm",
+   "likes": 2130,
+   "collects": 0,
+   "comments": 105,
+   "reposts": 16,
+   "excerpt": "爱在日落黄昏时。",
+   "body": "爱在日落黄昏时。",
+   "tags": [
+    "bv_love"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_daily",
+   "platform": "B站",
+   "idx": 9,
+   "title": "雪国列车🚄",
+   "url": "https://www.bilibili.com/video/BV1364y1J7Ci",
+   "date": "2024-01-05 08:45",
+   "bvid": "BV1364y1J7Ci",
+   "likes": 1602,
+   "collects": 0,
+   "comments": 60,
+   "reposts": 15,
+   "excerpt": "雪国列车🚄",
+   "body": "雪国列车🚄",
+   "tags": [
+    "bv_daily"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 10,
+   "title": "还有450分！干！",
+   "url": "https://www.bilibili.com/video/BV1ku411W7zh",
+   "date": "2023-06-07 11:11",
+   "bvid": "BV1ku411W7zh",
+   "likes": 4793,
+   "collects": 0,
+   "comments": 193,
+   "reposts": 16,
+   "excerpt": "还有450分！干！ 还有450分！ 干！",
+   "body": "还有450分！干！\n还有450分！\n干！",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_life",
+   "platform": "B站",
+   "idx": 11,
+   "title": "狂飙里，被忘掉的那群人。",
+   "url": "https://www.bilibili.com/video/BV1RT411U7NV",
+   "date": "2023-02-19 10:40",
+   "bvid": "BV1RT411U7NV",
+   "likes": 6644,
+   "collects": 0,
+   "comments": 343,
+   "reposts": 552,
+   "excerpt": "狂飙里，被忘掉的那群人。 好人也是怕的。 好人也是有情感的。 好人的心也是肉做的。 好人开枪也是会被打死的。 他不是不怕死。 是因为有比死更重要的东西。 是因为信仰。 这个世界是让人很失望的。 因为这样的人很少。 这个世界也是让人有希望的。 因为还有这样的人。",
+   "body": "狂飙里，被忘掉的那群人。\n好人也是怕的。\n好人也是有情感的。\n好人的心也是肉做的。\n好人开枪也是会被打死的。\n他不是不怕死。\n是因为有比死更重要的东西。\n是因为信仰。\n这个世界是让人很失望的。\n因为这样的人很少。\n这个世界也是让人有希望的。\n因为还有这样的人。",
+   "tags": [
+    "bv_life"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_univ",
+   "platform": "B站",
+   "idx": 12,
+   "title": "它，才是道理的爹，大学脱层皮我终于明白了。",
+   "url": "https://www.bilibili.com/video/BV16R4y1h7Y4",
+   "date": "2023-01-27 11:37",
+   "bvid": "BV16R4y1h7Y4",
+   "likes": 10504,
+   "collects": 0,
+   "comments": 409,
+   "reposts": 776,
+   "excerpt": "它，才是道理的爹，大学脱层皮我终于明白了。 大部分的道理作用都是提供情绪，而非提供标准。 但，很多人对自己的情绪又有误解。 觉得会维持很长时间，所以错过了道理加持的窗口期。 真正的改变链路应该是这样的： 好的道理→刺激我的情绪→促使我下定决心，做出决策→决策影响我长期的决策决定。 通过决策，邀请外界的关注，做出承诺，制",
+   "body": "它，才是道理的爹，大学脱层皮我终于明白了。\n大部分的道理作用都是提供情绪，而非提供标准。\n但，很多人对自己的情绪又有误解。\n觉得会维持很长时间，所以错过了道理加持的窗口期。\n真正的改变链路应该是这样的：\n好的道理→刺激我的情绪→促使我下定决心，做出决策→决策影响我长期的决策决定。\n通过决策，邀请外界的关注，做出承诺，制造违约成本。\n逼着自己能够把事情做下去。",
+   "tags": [
+    "bv_univ"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_study",
+   "platform": "B站",
+   "idx": 13,
+   "title": "这些删减内容，能让你大学躺赢。",
+   "url": "https://www.bilibili.com/video/BV12R4y187rY",
+   "date": "2023-01-26 11:59",
+   "bvid": "BV12R4y187rY",
+   "likes": 90524,
+   "collects": 0,
+   "comments": 1357,
+   "reposts": 7858,
+   "excerpt": "这些删减内容，能让你大学躺赢。 躺不赢的，大宝。 还是得卷，找好方向。 “你不能成为一个回避问题的人，你应该成为一个解决问题的人。”",
+   "body": "这些删减内容，能让你大学躺赢。\n躺不赢的，大宝。\n还是得卷，找好方向。\n“你不能成为一个回避问题的人，你应该成为一个解决问题的人。”",
+   "tags": [
+    "bv_study"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_mind",
+   "platform": "B站",
+   "idx": 14,
+   "title": "不发病，就正常了。正常了，就没劲了。我感觉是要旧疾复发了[嗑瓜子]",
+   "url": "https://www.bilibili.com/video/BV1oY41197JB",
+   "date": "2023-01-17 04:59",
+   "bvid": "BV1oY41197JB",
+   "likes": 2119,
+   "collects": 0,
+   "comments": 196,
+   "reposts": 50,
+   "excerpt": "不发病，就正常了。正常了，就没劲了。我感觉是要旧疾复发了[嗑瓜子] 不发病，就正常了。 正常了，就没劲了。 我感觉是要旧疾复发了[嗑瓜子]",
+   "body": "不发病，就正常了。正常了，就没劲了。我感觉是要旧疾复发了[嗑瓜子]\n不发病，就正常了。\n正常了，就没劲了。\n我感觉是要旧疾复发了[嗑瓜子]",
+   "tags": [
+    "bv_mind"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_mind",
+   "platform": "B站",
+   "idx": 15,
+   "title": "老王在我码公众号的时候偷偷去参加杭州树成林见面会了捏妈的看着好幸福我好难受啊啊啊[大哭]",
+   "url": "https://www.bilibili.com/video/BV1SB4y1L7Ng",
+   "date": "2022-10-02 14:01",
+   "bvid": "BV1SB4y1L7Ng",
+   "likes": 2666,
+   "collects": 0,
+   "comments": 122,
+   "reposts": 33,
+   "excerpt": "老王在我码公众号的时候偷偷去参加杭州树成林见面会了捏妈的看着好幸福我好难受啊啊啊[大哭] 老王在我码公众号的时候 偷偷去参加杭州树成林见面会了 捏妈的看着好幸福 我好难受啊啊啊[大哭]",
+   "body": "老王在我码公众号的时候偷偷去参加杭州树成林见面会了捏妈的看着好幸福我好难受啊啊啊[大哭]\n老王在我码公众号的时候\n偷偷去参加杭州树成林见面会了\n捏妈的看着好幸福\n我好难受啊啊啊[大哭]",
+   "tags": [
+    "bv_mind"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_univ",
+   "platform": "B站",
+   "idx": 16,
+   "title": "进来成为，大学面试的神",
+   "url": "https://www.bilibili.com/video/BV1Nt4y1J7rr",
+   "date": "2022-08-31 11:43",
+   "bvid": "BV1Nt4y1J7rr",
+   "likes": 35727,
+   "collects": 0,
+   "comments": 885,
+   "reposts": 7086,
+   "excerpt": "进来成为，大学面试的神 50S-5分50S：双向面试的心理建设 5分50-9分30S：屎上雕花的项目思维 9分30-16分钟：逢面必过的面试素材库 16分钟到最后：大学成长思路 评论区：无领导小组讨论之孔雀开屏精髓",
+   "body": "进来成为，大学面试的神\n50S-5分50S：双向面试的心理建设\n5分50-9分30S：屎上雕花的项目思维\n9分30-16分钟：逢面必过的面试素材库\n16分钟到最后：大学成长思路\n评论区：无领导小组讨论之孔雀开屏精髓",
+   "tags": [
+    "bv_univ"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_univ",
+   "platform": "B站",
+   "idx": 17,
+   "title": "这个思维，会断送你的大学四年",
+   "url": "https://www.bilibili.com/video/BV1TV4y1x7YV",
+   "date": "2022-08-20 11:53",
+   "bvid": "BV1TV4y1x7YV",
+   "likes": 367817,
+   "collects": 0,
+   "comments": 6382,
+   "reposts": 53335,
+   "excerpt": "这个思维，会断送你的大学四年 无谓的急。 和稀泥的惯性。 自我安慰的终局。",
+   "body": "这个思维，会断送你的大学四年\n无谓的急。\n和稀泥的惯性。\n自我安慰的终局。",
+   "tags": [
+    "bv_univ"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_exam",
+   "platform": "B站",
+   "idx": 18,
+   "title": "一件比放弃高考还可怕的事情。",
+   "url": "https://www.bilibili.com/video/BV18S4y1w7N2",
+   "date": "2022-04-30 11:23",
+   "bvid": "BV18S4y1w7N2",
+   "likes": 40842,
+   "collects": 0,
+   "comments": 3129,
+   "reposts": 6739,
+   "excerpt": "一件比放弃高考还可怕的事情。 这件事，比放弃高考更可怕。",
+   "body": "一件比放弃高考还可怕的事情。\n这件事，比放弃高考更可怕。",
+   "tags": [
+    "bv_exam"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 19,
+   "title": "高考唯一确定的逆袭方案",
+   "url": "https://www.bilibili.com/video/BV1UZ4y1r7pi",
+   "date": "2022-03-13 02:45",
+   "bvid": "BV1UZ4y1r7pi",
+   "likes": 51897,
+   "collects": 0,
+   "comments": 2412,
+   "reposts": 6441,
+   "excerpt": "高考唯一确定的逆袭方案 自主即未来",
+   "body": "高考唯一确定的逆袭方案\n自主即未来",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_exam",
+   "platform": "B站",
+   "idx": 20,
+   "title": "进来，赢最后一百天",
+   "url": "https://www.bilibili.com/video/BV15S4y1F7QZ",
+   "date": "2022-02-20 04:45",
+   "bvid": "BV15S4y1F7QZ",
+   "likes": 46846,
+   "collects": 0,
+   "comments": 1692,
+   "reposts": 4658,
+   "excerpt": "进来，赢最后一百天 100天，赢四倍。 变成四百天。",
+   "body": "进来，赢最后一百天\n100天，赢四倍。\n变成四百天。",
+   "tags": [
+    "bv_exam"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_exam",
+   "platform": "B站",
+   "idx": 21,
+   "title": "高中生，看完就有力气卷了",
+   "url": "https://www.bilibili.com/video/BV14P4y1w7uQ",
+   "date": "2022-02-13 02:25",
+   "bvid": "BV14P4y1w7uQ",
+   "likes": 348232,
+   "collects": 0,
+   "comments": 8843,
+   "reposts": 53529,
+   "excerpt": "高中生，看完就有力气卷了 这个视频，是为了帮助大家更好地了解现实。 高考和未来的关系，高考和未来生活质量的关系。 包括，现在的“卷”的情况的一些理解。 高考生确实很辛苦。 但是，大部分人并没有真正的活在现实里面。 所以，这才导致了他们最后接触现实的时候更痛苦。 与其后面意料之外，不如在现在还能改变的时候，全面激烈地接触",
+   "body": "高中生，看完就有力气卷了\n这个视频，是为了帮助大家更好地了解现实。\n高考和未来的关系，高考和未来生活质量的关系。\n包括，现在的“卷”的情况的一些理解。\n高考生确实很辛苦。\n但是，大部分人并没有真正的活在现实里面。\n所以，这才导致了他们最后接触现实的时候更痛苦。\n与其后面意料之外，不如在现在还能改变的时候，全面激烈地接触现实。\n当然，没有人能够真正的掌握真相，每个人眼中的都是小部分客观，大部分主观。\n最后说一下，这个视频的内容的数据，是一个模糊的约数。\n是损失了很多精度的，但是也算是一些现象的陈述和总结。\n在具体的地方肯定是会有一些出入的，不过应该也能够做到大体相合。\n总之，也就是视频最后期待的：\n希望你们能够真正的“求上”，最后至少也能够“保中”。\n那就够了～",
+   "tags": [
+    "bv_exam"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_life",
+   "platform": "B站",
+   "idx": 22,
+   "title": "成绩烂还这么想，那就真完了",
+   "url": "https://www.bilibili.com/video/BV15P4y1P7mv",
+   "date": "2022-02-06 10:14",
+   "bvid": "BV15P4y1P7mv",
+   "likes": 182892,
+   "collects": 0,
+   "comments": 6461,
+   "reposts": 19414,
+   "excerpt": "成绩烂还这么想，那就真完了",
+   "body": "成绩烂还这么想，那就真完了",
+   "tags": [
+    "bv_life"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 23,
+   "title": "如何变成假期规划100%兑现的自律卷王",
+   "url": "https://www.bilibili.com/video/BV1Ka41127L6",
+   "date": "2022-02-01 12:04",
+   "bvid": "BV1Ka41127L6",
+   "likes": 33222,
+   "collects": 0,
+   "comments": 952,
+   "reposts": 5321,
+   "excerpt": "如何变成假期规划100%兑现的自律卷王 这个视频帮你成为假期的自律之王。",
+   "body": "如何变成假期规划100%兑现的自律卷王\n这个视频帮你成为假期的自律之王。",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_study",
+   "platform": "B站",
+   "idx": 24,
+   "title": "管用就行！学渣杀疯寒假的四个歪门邪道",
+   "url": "https://www.bilibili.com/video/BV16q4y187X5",
+   "date": "2022-01-29 11:26",
+   "bvid": "BV16q4y187X5",
+   "likes": 73774,
+   "collects": 0,
+   "comments": 2865,
+   "reposts": 10458,
+   "excerpt": "管用就行！学渣杀疯寒假的四个歪门邪道 歪门邪道，其实不歪。 如果任何人都能够秉持着 “对未来负责的态度”。 也许这些东西就不用再以“歪门邪道”的标题来呈现了。",
+   "body": "管用就行！学渣杀疯寒假的四个歪门邪道\n歪门邪道，其实不歪。\n如果任何人都能够秉持着\n“对未来负责的态度”。\n也许这些东西就不用再以“歪门邪道”的标题来呈现了。",
+   "tags": [
+    "bv_study"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_exam",
+   "platform": "B站",
+   "idx": 25,
+   "title": "因为网课，我的高三报废了",
+   "url": "https://www.bilibili.com/video/BV1UL411c7Kh",
+   "date": "2022-01-22 12:08",
+   "bvid": "BV1UL411c7Kh",
+   "likes": 258020,
+   "collects": 0,
+   "comments": 7441,
+   "reposts": 17189,
+   "excerpt": "因为网课，我的高三报废了 不要像我这样！！ 不要像我这样！！",
+   "body": "因为网课，我的高三报废了\n不要像我这样！！\n不要像我这样！！",
+   "tags": [
+    "bv_exam"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_exam",
+   "platform": "B站",
+   "idx": 26,
+   "title": "十考九崩，这玩意儿可以救命",
+   "url": "https://www.bilibili.com/video/BV1AF411p77Q",
+   "date": "2022-01-15 11:28",
+   "bvid": "BV1AF411p77Q",
+   "likes": 43192,
+   "collects": 0,
+   "comments": 796,
+   "reposts": 3077,
+   "excerpt": "十考九崩，这玩意儿可以救命 考试慌慌慌慌慌慌慌慌慌 救命救命救命救命",
+   "body": "十考九崩，这玩意儿可以救命\n考试慌慌慌慌慌慌慌慌慌\n救命救命救命救命",
+   "tags": [
+    "bv_exam"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_repeat",
+   "platform": "B站",
+   "idx": 27,
+   "title": "就是因为这个，我复读了",
+   "url": "https://www.bilibili.com/video/BV15P4y1J7nu",
+   "date": "2022-01-08 12:21",
+   "bvid": "BV15P4y1J7nu",
+   "likes": 346881,
+   "collects": 0,
+   "comments": 3882,
+   "reposts": 19567,
+   "excerpt": "就是因为这个，我复读了 看完再决定，三思而后行。",
+   "body": "就是因为这个，我复读了\n看完再决定，三思而后行。",
+   "tags": [
+    "bv_repeat"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_study",
+   "platform": "B站",
+   "idx": 28,
+   "title": "必收藏！b站千万播放量，帮你避开高中的十个巨坑！",
+   "url": "https://www.bilibili.com/video/BV1SS4y1f7xt",
+   "date": "2022-01-01 09:45",
+   "bvid": "BV1SS4y1f7xt",
+   "likes": 66270,
+   "collects": 0,
+   "comments": 2113,
+   "reposts": 8647,
+   "excerpt": "必收藏！b站千万播放量，帮你避开高中的十个巨坑！ 这十个视频，依次解决十个问题： 1，梳理高三的学习框架，透视自我感动。 2，给出逆袭的底层原理，相信逆袭可以是理所当然。 3，给出高效300%的听课方法，强化大脑思考。 4，解决所有情绪问题，避免无效内阿訇。 5，保证鸡血满满，高三的斗志。 6，保证十二个小时高效的生活",
+   "body": "必收藏！b站千万播放量，帮你避开高中的十个巨坑！\n这十个视频，依次解决十个问题：\n1，梳理高三的学习框架，透视自我感动。\n2，给出逆袭的底层原理，相信逆袭可以是理所当然。\n3，给出高效300%的听课方法，强化大脑思考。\n4，解决所有情绪问题，避免无效内阿訇。\n5，保证鸡血满满，高三的斗志。\n6，保证十二个小时高效的生活系统，解决健康问题。\n7，给出降维打击高考的视角，解决考试问题。\n8，高三作死---完美主义的解决方案\n9，解决困扰一大群人的恋爱问题。\n10，妨碍高效的聪明人陷阱。\n向大学的标杆看齐！\n@取景框看世界",
+   "tags": [
+    "bv_study"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 29,
+   "title": "这个方法，才能帮你榨干考试的最后一滴效率",
+   "url": "https://www.bilibili.com/video/BV1Mm4y1X7RL",
+   "date": "2021-12-31 10:50",
+   "bvid": "BV1Mm4y1X7RL",
+   "likes": 51165,
+   "collects": 0,
+   "comments": 1563,
+   "reposts": 6344,
+   "excerpt": "这个方法，才能帮你榨干考试的最后一滴效率 考明白了， 就赢了一半了。",
+   "body": "这个方法，才能帮你榨干考试的最后一滴效率\n考明白了，\n就赢了一半了。",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_exam",
+   "platform": "B站",
+   "idx": 30,
+   "title": "如果回到高三，我绝不会再做的事。",
+   "url": "https://www.bilibili.com/video/BV1y34y167ub",
+   "date": "2021-12-26 01:58",
+   "bvid": "BV1y34y167ub",
+   "likes": 64095,
+   "collects": 0,
+   "comments": 3117,
+   "reposts": 6489,
+   "excerpt": "如果回到高三，我绝不会再做的事。",
+   "body": "如果回到高三，我绝不会再做的事。",
+   "tags": [
+    "bv_exam"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 31,
+   "title": "这个方法，一百天顶300天【高三压榨极限】",
+   "url": "https://www.bilibili.com/video/BV1nY411H7TB",
+   "date": "2021-12-18 11:04",
+   "bvid": "BV1nY411H7TB",
+   "likes": 41395,
+   "collects": 0,
+   "comments": 985,
+   "reposts": 4651,
+   "excerpt": "这个方法，一百天顶300天【高三压榨极限】 这个方法，一百天能顶三百天",
+   "body": "这个方法，一百天顶300天【高三压榨极限】\n这个方法，一百天能顶三百天",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_life",
+   "platform": "B站",
+   "idx": 32,
+   "title": "可以爆肝12小时的生活系统",
+   "url": "https://www.bilibili.com/video/BV1pL411E7JN",
+   "date": "2021-12-11 11:00",
+   "bvid": "BV1pL411E7JN",
+   "likes": 17057,
+   "collects": 0,
+   "comments": 983,
+   "reposts": 1525,
+   "excerpt": "可以爆肝12小时的生活系统 一个可以高效12个小时的生活系统。 文案在公众号可以看到~",
+   "body": "可以爆肝12小时的生活系统\n一个可以高效12个小时的生活系统。\n文案在公众号可以看到~",
+   "tags": [
+    "bv_life"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 33,
+   "title": "怎么变成一台无情的学习机器？",
+   "url": "https://www.bilibili.com/video/BV1oh411x7zd",
+   "date": "2021-11-13 10:46",
+   "bvid": "BV1oh411x7zd",
+   "likes": 186066,
+   "collects": 0,
+   "comments": 3397,
+   "reposts": 17797,
+   "excerpt": "怎么变成一台无情的学习机器？",
+   "body": "怎么变成一台无情的学习机器？",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_mind",
+   "platform": "B站",
+   "idx": 34,
+   "title": "高中最大的情绪黑洞",
+   "url": "https://www.bilibili.com/video/BV1JT4y197DB",
+   "date": "2021-11-06 11:04",
+   "bvid": "BV1JT4y197DB",
+   "likes": 43862,
+   "collects": 0,
+   "comments": 1663,
+   "reposts": 7641,
+   "excerpt": "高中最大的情绪黑洞 出来吧你~ 情绪黑洞。",
+   "body": "高中最大的情绪黑洞\n出来吧你~\n情绪黑洞。",
+   "tags": [
+    "bv_mind"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_mind",
+   "platform": "B站",
+   "idx": 35,
+   "title": "学生时代最大的陷阱",
+   "url": "https://www.bilibili.com/video/BV1X3411k7CX",
+   "date": "2021-10-31 01:30",
+   "bvid": "BV1X3411k7CX",
+   "likes": 186272,
+   "collects": 0,
+   "comments": 6386,
+   "reposts": 18872,
+   "excerpt": "学生时代最大的陷阱",
+   "body": "学生时代最大的陷阱",
+   "tags": [
+    "bv_mind"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 36,
+   "title": "进来，跟你算笔高三的时间账",
+   "url": "https://www.bilibili.com/video/BV1cv411g7gA",
+   "date": "2021-10-23 11:54",
+   "bvid": "BV1cv411g7gA",
+   "likes": 152633,
+   "collects": 0,
+   "comments": 5475,
+   "reposts": 25895,
+   "excerpt": "进来，跟你算笔高三的时间账 算笔高三的时间账。",
+   "body": "进来，跟你算笔高三的时间账\n算笔高三的时间账。",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 37,
+   "title": "高中生可以每天睡四个小时吗？",
+   "url": "https://www.bilibili.com/video/BV1h341117Ys",
+   "date": "2021-10-06 12:21",
+   "bvid": "BV1h341117Ys",
+   "likes": 248282,
+   "collects": 0,
+   "comments": 12935,
+   "reposts": 34547,
+   "excerpt": "高中生可以每天睡四个小时吗？ 睡四个小时。 其实困倦很好解决。 但是对大脑，免疫系统的损伤。 以及对我们动力和情绪系统的削弱都是不可逆的。",
+   "body": "高中生可以每天睡四个小时吗？\n睡四个小时。\n其实困倦很好解决。\n但是对大脑，免疫系统的损伤。\n以及对我们动力和情绪系统的削弱都是不可逆的。",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 38,
+   "title": "非“学神”的逆袭路径",
+   "url": "https://www.bilibili.com/video/BV1dQ4y1z7Wx",
+   "date": "2021-10-02 11:09",
+   "bvid": "BV1dQ4y1z7Wx",
+   "likes": 64322,
+   "collects": 0,
+   "comments": 1419,
+   "reposts": 5887,
+   "excerpt": "非“学神”的逆袭路径 逆袭的本质，是走远路。",
+   "body": "非“学神”的逆袭路径\n逆袭的本质，是走远路。",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_life",
+   "platform": "B站",
+   "idx": 39,
+   "title": "人生，就是一个圈。",
+   "url": "https://www.bilibili.com/video/BV1S44y147ta",
+   "date": "2021-10-01 08:20",
+   "bvid": "BV1S44y147ta",
+   "likes": 11016,
+   "collects": 0,
+   "comments": 378,
+   "reposts": 1192,
+   "excerpt": "人生，就是一个圈。 人生这个圈再大。 它也只有一个圆心。 而这个圆心，是你。",
+   "body": "人生，就是一个圈。\n人生这个圈再大。\n它也只有一个圆心。\n而这个圆心，是你。",
+   "tags": [
+    "bv_life"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_daily",
+   "platform": "B站",
+   "idx": 40,
+   "title": "初一小时候好可爱。我死了[tv_大哭][tv_大哭]",
+   "url": "https://www.bilibili.com/video/BV12f4y1E7sZ",
+   "date": "2021-09-22 15:01",
+   "bvid": "BV12f4y1E7sZ",
+   "likes": 1185,
+   "collects": 0,
+   "comments": 52,
+   "reposts": 7,
+   "excerpt": "初一小时候好可爱。我死了[tv_大哭][tv_大哭] 初一小时候好可爱。 我死了[tv_大哭][tv_大哭]",
+   "body": "初一小时候好可爱。我死了[tv_大哭][tv_大哭]\n初一小时候好可爱。\n我死了[tv_大哭][tv_大哭]",
+   "tags": [
+    "bv_daily"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_mind",
+   "platform": "B站",
+   "idx": 41,
+   "title": "我可以不用这么努力吗？",
+   "url": "https://www.bilibili.com/video/BV1zq4y1K7tp",
+   "date": "2021-08-31 09:31",
+   "bvid": "BV1zq4y1K7tp",
+   "likes": 9174,
+   "collects": 0,
+   "comments": 948,
+   "reposts": 1302,
+   "excerpt": "我可以不用这么努力吗？ “无数次睡过头的下午，看着将暮未暮的夕阳，无生趣。” “无数次熬到深夜，感性回归，情绪上涌，只觉前路艰难，未来迷茫。” “考差了之后的逃避，自我否定，自我怀疑，恐惧和害怕，屈辱和不甘。” 其实，我们不用这么勉强自己。 也许，我们不用努力得这么痛苦。 也不用拼了命地去满足别人的期待。",
+   "body": "我可以不用这么努力吗？\n“无数次睡过头的下午，看着将暮未暮的夕阳，无生趣。”\n“无数次熬到深夜，感性回归，情绪上涌，只觉前路艰难，未来迷茫。”\n“考差了之后的逃避，自我否定，自我怀疑，恐惧和害怕，屈辱和不甘。”\n其实，我们不用这么勉强自己。\n也许，我们不用努力得这么痛苦。\n也不用拼了命地去满足别人的期待。",
+   "tags": [
+    "bv_mind"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_love",
+   "platform": "B站",
+   "idx": 42,
+   "title": "『洁癖式孤独』",
+   "url": "https://www.bilibili.com/video/BV1mq4y1K7b3",
+   "date": "2021-08-27 09:14",
+   "bvid": "BV1mq4y1K7b3",
+   "likes": 13721,
+   "collects": 0,
+   "comments": 1014,
+   "reposts": 1432,
+   "excerpt": "『洁癖式孤独』 孤独，也许是我们的主动选择的 证明我们“与众不同”的手段。",
+   "body": "『洁癖式孤独』\n孤独，也许是我们的主动选择的\n证明我们“与众不同”的手段。",
+   "tags": [
+    "bv_love"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_love",
+   "platform": "B站",
+   "idx": 43,
+   "title": "『最不适合恋爱的人』",
+   "url": "https://www.bilibili.com/video/BV1QU4y1j7gr",
+   "date": "2021-08-22 11:37",
+   "bvid": "BV1QU4y1j7gr",
+   "likes": 87165,
+   "collects": 0,
+   "comments": 5031,
+   "reposts": 32292,
+   "excerpt": "『最不适合恋爱的人』 最适合恋爱的人，一般最不需要恋爱。 最不适合恋爱的人，往往最渴望恋爱。",
+   "body": "『最不适合恋爱的人』\n最适合恋爱的人，一般最不需要恋爱。\n最不适合恋爱的人，往往最渴望恋爱。",
+   "tags": [
+    "bv_love"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_life",
+   "platform": "B站",
+   "idx": 44,
+   "title": "我们在“被成为”普通人",
+   "url": "https://www.bilibili.com/video/BV1Vg41157w6",
+   "date": "2021-08-21 12:25",
+   "bvid": "BV1Vg41157w6",
+   "likes": 14663,
+   "collects": 0,
+   "comments": 1038,
+   "reposts": 1730,
+   "excerpt": "我们在“被成为”普通人 如果我们只接受推荐，而不是去选择主动搜索。 结果就是【平台化的信息，会把我们变成平台化的人】",
+   "body": "我们在“被成为”普通人\n如果我们只接受推荐，而不是去选择主动搜索。\n结果就是【平台化的信息，会把我们变成平台化的人】",
+   "tags": [
+    "bv_life"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_study",
+   "platform": "B站",
+   "idx": 45,
+   "title": "『数学』 带你从做题家变成出题家",
+   "url": "https://www.bilibili.com/video/BV1S64y1x7fY",
+   "date": "2021-07-31 11:04",
+   "bvid": "BV1S64y1x7fY",
+   "likes": 13362,
+   "collects": 0,
+   "comments": 473,
+   "reposts": 890,
+   "excerpt": "『数学』 带你从做题家变成出题家 降维打击的出题思维。 从做题家成为出题家。",
+   "body": "『数学』 带你从做题家变成出题家\n降维打击的出题思维。\n从做题家成为出题家。",
+   "tags": [
+    "bv_study"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_mind",
+   "platform": "B站",
+   "idx": 46,
+   "title": "考不好的三个特性",
+   "url": "https://www.bilibili.com/video/BV13b4y1r7SU",
+   "date": "2021-07-30 12:47",
+   "bvid": "BV13b4y1r7SU",
+   "likes": 13471,
+   "collects": 0,
+   "comments": 490,
+   "reposts": 1404,
+   "excerpt": "考不好的三个特性 情绪化，完美主义，路径依赖。",
+   "body": "考不好的三个特性\n情绪化，完美主义，路径依赖。",
+   "tags": [
+    "bv_mind"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_love",
+   "platform": "B站",
+   "idx": 47,
+   "title": "『人际关系里的空心人』",
+   "url": "https://www.bilibili.com/video/BV1Vo4y1Q7cg",
+   "date": "2021-07-26 11:19",
+   "bvid": "BV1Vo4y1Q7cg",
+   "likes": 35178,
+   "collects": 0,
+   "comments": 1845,
+   "reposts": 3977,
+   "excerpt": "『人际关系里的空心人』 自我边界应该是清晰且有弹性的~",
+   "body": "『人际关系里的空心人』\n自我边界应该是清晰且有弹性的~",
+   "tags": [
+    "bv_love"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 48,
+   "title": "『假期自律崩坏症』",
+   "url": "https://www.bilibili.com/video/BV1Tb4y1r7zx",
+   "date": "2021-07-25 11:16",
+   "bvid": "BV1Tb4y1r7zx",
+   "likes": 27439,
+   "collects": 0,
+   "comments": 1592,
+   "reposts": 4460,
+   "excerpt": "『假期自律崩坏症』 不保证一定有用，但至少好多人看过都表示很开心~",
+   "body": "『假期自律崩坏症』\n不保证一定有用，但至少好多人看过都表示很开心~",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 49,
+   "title": "一年，怎么上650？",
+   "url": "https://www.bilibili.com/video/BV1zq4y1W7RV",
+   "date": "2021-07-24 11:21",
+   "bvid": "BV1zq4y1W7RV",
+   "likes": 514467,
+   "collects": 0,
+   "comments": 13979,
+   "reposts": 99692,
+   "excerpt": "一年，怎么上650？ 对抗这些： 自我感动。 思维惯性。 极端归因。 路径依赖。 手段目标。 及时满足。",
+   "body": "一年，怎么上650？\n对抗这些：\n自我感动。\n思维惯性。\n极端归因。\n路径依赖。\n手段目标。\n及时满足。",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_daily",
+   "platform": "B站",
+   "idx": 50,
+   "title": "《everything‘s Alrigh",
+   "url": "https://www.bilibili.com/video/BV1dh41187B8",
+   "date": "2021-06-25 05:58",
+   "bvid": "BV1dh41187B8",
+   "likes": 540,
+   "collects": 0,
+   "comments": 46,
+   "reposts": 2,
+   "excerpt": "- 非公开视频 《everything‘s Alright》",
+   "body": "-\n非公开视频\n《everything‘s Alright》",
+   "tags": [
+    "bv_daily"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 51,
+   "title": "这应该是B站最全的考试指南",
+   "url": "https://www.bilibili.com/video/BV1264y1k7YT",
+   "date": "2021-06-05 22:41",
+   "bvid": "BV1264y1k7YT",
+   "likes": 3825,
+   "collects": 0,
+   "comments": 494,
+   "reposts": 783,
+   "excerpt": "这应该是B站最全的考试指南 解决考中所有突发情况， 我相信这样直播不只会给你的高考带来勇气，也会给你高考之后的生活带来勇气。 高考是结束，更是开始。",
+   "body": "这应该是B站最全的考试指南\n解决考中所有突发情况，\n我相信这样直播不只会给你的高考带来勇气，也会给你高考之后的生活带来勇气。\n高考是结束，更是开始。",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_exam",
+   "platform": "B站",
+   "idx": 52,
+   "title": "请放下对高考的幻想",
+   "url": "https://www.bilibili.com/video/BV1Pv41157MD",
+   "date": "2021-06-01 12:05",
+   "bvid": "BV1Pv41157MD",
+   "likes": 12203,
+   "collects": 0,
+   "comments": 926,
+   "reposts": 1312,
+   "excerpt": "请放下对高考的幻想",
+   "body": "请放下对高考的幻想",
+   "tags": [
+    "bv_exam"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 53,
+   "title": "【高考】450到684，这可能会是你看的最后一个学习方法视频！",
+   "url": "https://www.bilibili.com/video/BV15A411g764",
+   "date": "2021-02-09 12:21",
+   "bvid": "BV15A411g764",
+   "likes": 112543,
+   "collects": 0,
+   "comments": 3072,
+   "reposts": 15542,
+   "excerpt": "【高考】450到684，这可能会是你看的最后一个学习方法视频！ 我说一下。 这个视频包括的方法有，基于学习底层原理的五步学习法。 以最大化效率的五分间隔测试法。 构建知识体系的基本方法，还有三套卷的速度优化法。 这个视频可以帮助你们，建立一个自律体系。 包括生活习惯的优化，学习习惯的建立，以及动力系统的寻找，自我认知边",
+   "body": "【高考】450到684，这可能会是你看的最后一个学习方法视频！\n我说一下。\n这个视频包括的方法有，基于学习底层原理的五步学习法。\n以最大化效率的五分间隔测试法。\n构建知识体系的基本方法，还有三套卷的速度优化法。\n这个视频可以帮助你们，建立一个自律体系。\n包括生活习惯的优化，学习习惯的建立，以及动力系统的寻找，自我认知边界的确立。\n包括但不限于教你逆袭，教你谈恋爱，说到谈恋爱我可就不困了嗷。\n给你具体的寒假规划。\n请大家相信我，这也许会是你看的最后一个学习方法的视频。\n我有这个底气和信心说这个话。",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 54,
+   "title": "关于自律，也许可以是最后一次。",
+   "url": "https://www.bilibili.com/video/BV1sV411b7Ny",
+   "date": "2020-12-30 12:33",
+   "bvid": "BV1sV411b7Ny",
+   "likes": 54914,
+   "collects": 0,
+   "comments": 1788,
+   "reposts": 7709,
+   "excerpt": "关于自律，也许可以是最后一次。 看完，去做。 尊重现实，脚踏实地。 三连其实不重要，你能够相信改变最重要！",
+   "body": "关于自律，也许可以是最后一次。\n看完，去做。\n尊重现实，脚踏实地。\n三连其实不重要，你能够相信改变最重要！",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 55,
+   "title": "逆袭？清醒一点！",
+   "url": "https://www.bilibili.com/video/BV1uX4y1u7jD",
+   "date": "2020-12-16 12:58",
+   "bvid": "BV1uX4y1u7jD",
+   "likes": 144593,
+   "collects": 0,
+   "comments": 3708,
+   "reposts": 18696,
+   "excerpt": "逆袭？清醒一点！ 清醒一点，来真的。",
+   "body": "逆袭？清醒一点！\n清醒一点，来真的。",
+   "tags": [
+    "bv_method"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_study",
+   "platform": "B站",
+   "idx": 56,
+   "title": "【高考逆袭】提分效率最大化的六轮复习（上）",
+   "url": "https://www.bilibili.com/video/BV1yk4y1C7bM",
+   "date": "2020-10-10 11:59",
+   "bvid": "BV1yk4y1C7bM",
+   "likes": 10431,
+   "collects": 0,
+   "comments": 319,
+   "reposts": 987,
+   "excerpt": "【高考逆袭】提分效率最大化的六轮复习（上） 你确定不了解一下比三轮复习更香的六轮复习法嘛！ 更科学的高效记忆原理，问题导向思维，用脑原则的贯彻。 详尽的每轮复习的目标和要求。 大家看完有用的话请给个一键三连嗷！",
+   "body": "【高考逆袭】提分效率最大化的六轮复习（上）\n你确定不了解一下比三轮复习更香的六轮复习法嘛！\n更科学的高效记忆原理，问题导向思维，用脑原则的贯彻。\n详尽的每轮复习的目标和要求。\n大家看完有用的话请给个一键三连嗷！",
+   "tags": [
+    "bv_study"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_study",
+   "platform": "B站",
+   "idx": 57,
+   "title": "【高三必看！】最强逆袭提分法，解构逆袭",
+   "url": "https://www.bilibili.com/video/BV1mD4y1R7M3",
+   "date": "2020-09-30 08:17",
+   "bvid": "BV1mD4y1R7M3",
+   "likes": 15747,
+   "collects": 0,
+   "comments": 384,
+   "reposts": 1362,
+   "excerpt": "【高三必看！】最强逆袭提分法，解构逆袭 这是我三年多来带学生的方法经验总结。 没有标题党，你看完就明白了。 如果觉得有用请立刻马上关注我，建议不要放跑了。 放跑了我也会回来的。",
+   "body": "【高三必看！】最强逆袭提分法，解构逆袭\n这是我三年多来带学生的方法经验总结。\n没有标题党，你看完就明白了。\n如果觉得有用请立刻马上关注我，建议不要放跑了。\n放跑了我也会回来的。",
+   "tags": [
+    "bv_study"
+   ]
+  },
+  {
+   "type": "B站视频",
+   "sys": "biliv",
+   "group": "bv_method",
+   "platform": "B站",
+   "idx": 58,
+   "title": "【快速提分】最强最细计划完全指导",
+   "url": "https://www.bilibili.com/video/BV1E54y1y7Ef",
+   "date": "2020-09-22 14:55",
+   "bvid": "BV1E54y1y7Ef",
+   "likes": 15179,
+   "collects": 0,
+   "comments": 422,
+   "reposts": 1348,
+   "excerpt": "【快速提分】最强最细计划完全指导 高考不能逆袭但是可以快速提分！ 应该是你们看过的最详细的计划指导视频！ 视频会出一个系列哦！ 公众号：“树成林”，回复“计划表格”可以领到表格和导图哦。",
+   "body": "【快速提分】最强最细计划完全指导\n高考不能逆袭但是可以快速提分！\n应该是你们看过的最详细的计划指导视频！\n视频会出一个系列哦！\n公众号：“树成林”，回复“计划表格”可以领到表格和导图哦。",
+   "tags": [
+    "bv_method"
    ]
   }
  ]

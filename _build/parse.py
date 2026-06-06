@@ -3,8 +3,8 @@
 解析「树成林」全部内容 -> 结构化数据 + 分组，供「树林知识宇宙」可视化使用。
 
 两层结构：
-  系统(system)  ── 知乎 / 公众号 / B站动态
-    └ 分组(group) ── 知乎=13 内容维度；公众号=两个号(对木同学 / 树成林Light)；B站=动态类型
+  系统(system)  ── 知乎 / 公众号 / B站动态 / B站视频
+    └ 分组(group) ── 知乎=13 内容维度；公众号=两个号(对木同学 / 树成林Light)；B站动态=动态类型；B站视频=9 主题
         └ 内容(item)
 
 数据源：
@@ -12,6 +12,7 @@
   知乎  想法        <- 知乎/树成林-想法合集.md（带链接+评论数）
   公众号 两个号     <- 公众号/对木同学/*.md  公众号/树成林Light/*.md（每篇一文件）
   B站   动态        <- b站动态/树林同学_B站动态_完整版(1).md
+  B站   视频文案    <- b站视频/树林同学_B站视频文案.md（标题+简介为文案，58 个投稿）
 
 输出：
   - 数据/data.json + 数据/data.js  （供 index.html）
@@ -25,6 +26,7 @@ ZHIHU_SRC = "/Users/水猫/文档/树林/知乎/树成林-知乎数据.md"
 THINK_SRC = "/Users/水猫/文档/树林/知乎/树成林-想法合集.md"
 MP_ROOT   = "/Users/水猫/文档/树林/公众号"
 BILI_SRC  = "/Users/水猫/文档/树林/b站动态/树林同学_B站动态_完整版(1).md"
+BILI_VIDEO_SRC = "/Users/水猫/文档/树林/b站视频/树林同学_B站视频文案.md"
 
 # 公众号账号：(id, 名称, emoji, 颜色, 文件夹)
 MP_ACCOUNTS = [
@@ -58,6 +60,21 @@ BILI_GROUPS = [
 BILI_SECTION_TO_GROUP = {section: gid for gid, _name, _emoji, _color, section in BILI_GROUPS}
 BILI_GROUP_META = {gid: {"id": gid, "name": name, "emoji": emoji, "color": color}
                    for gid, name, emoji, color, _section in BILI_GROUPS}
+
+# B站视频 主题分组（归纳分类，关键词命中；顺序即优先级，人生·认知兜底）
+BV_CATS = [
+    ("bv_study",  "学科·工具",   "📚", "#06A77D", ["数学","英语","物理","化学","deepseek","ai","做题家","出题家","合法作弊","内卷方案","刷题","错题","题"]),
+    ("bv_method", "提分·方法",   "🚀", "#EF476F", ["提分","提高","逆袭","复习","六轮","三轮","计划","自学","效率","学习机器","记忆","方法","指南","压榨","榨干","极限","450","650","684","学渣","卷王","自律","规划","顶300天","时间账","睡四个小时","睡4"]),
+    ("bv_exam",   "高考·冲刺",   "🎯", "#4361EE", ["高考","高三","高二","高一","一百天","100天","百天","冲刺","考试","考前","十考九崩","网课","出分","赢最后","幻想","最后一百天"]),
+    ("bv_repeat", "复读·决策",   "🔁", "#9D4EDD", ["复读","复了","高四"]),
+    ("bv_univ",   "大学·未来",   "🎓", "#7209B7", ["大学","面试","躺赢","躺","脱层皮","大学四年","删减内容","专业","职场"]),
+    ("bv_love",   "情感·人际",   "❤️", "#E63946", ["恋爱","爱情","爱在","日落黄昏","适合恋爱","空心人","洁癖式孤独","人际关系","孤独"]),
+    ("bv_mind",   "心态·情绪",   "🧠", "#F77F00", ["焦虑","情绪","emo","自卑","黑洞","陷阱","压力","发病","难受","力气","卷了","清醒一点","正常了","原动力","破防","内耗"]),
+    ("bv_daily",  "日常·随笔",   "🪐", "#8D99AE", ["包场","海底捞","哪吒","雪国列车","见面会","初一","可爱","杭州","everything","alright","老王","见面","歌单"]),
+    ("bv_life",   "人生·认知",   "🌱", "#588157", ["人生","独立","人格","精神独立","自由","普通人","被成为","现实","认知","成长","圈","百年","尽兴","道理","清醒","站起来","竹杖芒鞋","一蓑烟雨","被忘掉"]),
+]
+BV_ORDER = [c[0] for c in BV_CATS]
+BV_META = {c[0]: {"id": c[0], "name": c[1], "emoji": c[2], "color": c[3]} for c in BV_CATS}
 
 items = []
 audit_stats = collections.Counter()
@@ -347,15 +364,84 @@ if os.path.isfile(BILI_SRC):
 else:
     print("⚠️ 缺少 B站动态文件：", BILI_SRC)
 
+# ================================================================ B站视频（文案）
+def classify_bv(title, body):
+    hay = (title + " " + (body or "")).lower()
+    for cid, name, emoji, color, kws in BV_CATS:
+        if any(k.lower() in hay for k in kws):
+            return cid
+    return "bv_life"
+
+if os.path.isfile(BILI_VIDEO_SRC):
+    with open(BILI_VIDEO_SRC, encoding="utf-8") as f:
+        vtext = f.read()
+    blocks = re.split(r"\n(?=##\s+\d+\.)", vtext)
+    bv_cnt = 0
+    for blk in blocks:
+        hm = re.match(r"##\s+(\d+)\.\s+(.+)", blk)
+        if not hm:
+            continue
+        idx = int(hm.group(1))
+        title = hm.group(2).strip()
+        um = re.search(r"🔗\s*\*\*链接:\*\*\s*(\S+)", blk)
+        bm = re.search(r"`(BV\w+)`", blk)
+        pm = re.search(r"🕐\s*\*\*发布时间:\*\*\s*([0-9:\s\-]+)", blk)
+        url  = um.group(1).strip() if um else ""
+        bvid = bm.group(1) if bm else ""
+        date = pm.group(1).strip() if pm else ""
+        like = comment = repost = 0
+        sm = re.search(r"📊\s*\*\*数据:\*\*\s*(.+)", blk)
+        if sm:
+            sline = sm.group(1)
+            lm = re.search(r"❤️\s*([\d,]+)", sline)
+            cm = re.search(r"💬\s*([\d,]+)", sline)
+            rm = re.search(r"🔄\s*([\d,]+)", sline)
+            if lm: like = int(lm.group(1).replace(",", ""))
+            if cm: comment = int(cm.group(1).replace(",", ""))
+            if rm: repost = int(rm.group(1).replace(",", ""))
+        copy_lines = []
+        after = blk.split("**📝 文案：**", 1)
+        if len(after) == 2:
+            for ln in after[1].splitlines():
+                s = ln.strip()
+                if s == "---":
+                    break
+                if s.startswith(">"):
+                    s = s[1:].strip()
+                    if not s or s.startswith("（视频无额外简介"):
+                        continue
+                    copy_lines.append(s)
+        copy_text = "\n".join(copy_lines).strip()
+        if copy_text and copy_text not in title and title not in copy_text:
+            body_text = f"{title}\n{copy_text}"
+        else:
+            body_text = copy_text or title
+        group = classify_bv(title, body_text)
+        items.append({
+            "type": "B站视频", "sys": "biliv", "group": group,
+            "platform": "B站", "idx": idx,
+            "title": title, "url": url, "date": date, "bvid": bvid,
+            "likes": like, "collects": 0, "comments": comment, "reposts": repost,
+            "excerpt": re.sub(r"\s+", " ", body_text)[:160],
+            "body": body_text[:4000],
+            "tags": [group],
+        })
+        bv_cnt += 1
+    print("B站视频：", collections.Counter(it["group"] for it in items if it["sys"] == "biliv"), f"共{bv_cnt}")
+else:
+    print("⚠️ 缺少 B站视频文件：", BILI_VIDEO_SRC)
+
 # ================================================================ 系统/分组元数据
 SYSTEMS = [
     {"id": "zhihu", "name": "知乎",   "emoji": "📕", "color": "#4361EE"},
     {"id": "mp",    "name": "公众号", "emoji": "📗", "color": "#2A9D8F"},
     {"id": "bili",  "name": "B站动态", "emoji": "📡", "color": "#79B8FF"},
+    {"id": "biliv", "name": "B站视频", "emoji": "🎬", "color": "#E9C46A"},
 ]
 GROUPS = [{"id": c[0], "sys": "zhihu", "name": c[1], "emoji": c[2], "color": c[3]} for c in CATS] \
        + [{"id": a[0], "sys": "mp",    "name": a[1], "emoji": a[2], "color": a[3]} for a in MP_ACCOUNTS] \
-       + [{"id": g[0], "sys": "bili",  "name": g[1], "emoji": g[2], "color": g[3]} for g in BILI_GROUPS]
+       + [{"id": g[0], "sys": "bili",  "name": g[1], "emoji": g[2], "color": g[3]} for g in BILI_GROUPS] \
+       + [{"id": c[0], "sys": "biliv", "name": c[1], "emoji": c[2], "color": c[3]} for c in BV_CATS]
 GROUP_META = {g["id"]: g for g in GROUPS}
 GROUP_ORDER = [g["id"] for g in GROUPS]
 
@@ -395,9 +481,9 @@ print(open(os.path.join(ROOT, "_build", "stats.txt"), encoding="utf-8").read())
 data = {
     "meta": {
         "title": "树林知识宇宙",
-        "subtitle": "树成林 · 知乎 + 公众号 + B站动态全集",
+        "subtitle": "树成林 · 知乎 + 公众号 + B站动态 + B站视频全集",
         "total": len(items),
-        "crawl_date": "2026-06-04",
+        "crawl_date": "2026-06-06",
     },
     "systems": SYSTEMS,
     "groups": GROUPS,
@@ -424,6 +510,8 @@ def source_doc_path(it):
         return f"数据/分类文档/公众号/{g['emoji']}{g['name']}.md"
     if it.get("sys") == "bili":
         return f"数据/分类文档/B站动态/{g['emoji']}{g['name']}.md"
+    if it.get("sys") == "biliv":
+        return f"数据/分类文档/B站视频/{g['emoji']}{g['name'].replace('·','-')}.md"
     return ""
 
 def agent_search_text(it):
@@ -473,7 +561,7 @@ agent_index = {
         "entry": "agent.html",
         "query_params": {
             "q": "关键词，支持任意文本",
-            "platform": "all | zhihu | mp | bili",
+            "platform": "all | zhihu | mp | bili | biliv",
             "format": "md | json",
             "limit": "返回条数上限，默认 80",
             "id": "直接读取单条内容的 agent_id"
@@ -577,5 +665,22 @@ for g in GROUPS:
             ml = f"❤️ {it.get('likes',0):,} · 💬 {it.get('comments',0):,} · 🔄 {it.get('reposts',0):,}"
             f.write(ml + "\n\n" + it["excerpt"] + ("…" if len(it["excerpt"]) >= 150 else "") + "\n\n---\n\n")
 
-print("已写 数据/分类文档/知乎/*.md + 数据/分类文档/公众号/*.md + 数据/分类文档/B站动态/*.md")
+# B站视频：按主题，按发布时间倒序，输出文案
+vdir = os.path.join(DOC_ROOT, "B站视频"); os.makedirs(vdir, exist_ok=True)
+for g in GROUPS:
+    if g["sys"] != "biliv":
+        continue
+    arr = sorted(by_group.get(g["id"], []), key=lambda x: x.get("date", ""), reverse=True)
+    if not arr:
+        continue
+    fn = os.path.join(vdir, f"{g['emoji']}{g['name'].replace('·','-')}.md")
+    with open(fn, "w", encoding="utf-8") as f:
+        f.write(f"# {g['emoji']} {g['name']}\n\n> 共 **{len(arr)}** 个视频（按发布时间倒序）｜来源：B站视频文案\n\n---\n\n")
+        for it in arr:
+            head = f"[{it['title']}]({it['url']})" if it["url"] else it["title"]
+            f.write(f"### 🎬 {head}\n\n")
+            ml = f"*{it.get('date','')}* ｜ ❤️ {it.get('likes',0):,} · 💬 {it.get('comments',0):,} · 🔄 {it.get('reposts',0):,}"
+            f.write(ml + "\n\n" + it["excerpt"] + ("…" if len(it["excerpt"]) >= 150 else "") + "\n\n---\n\n")
+
+print("已写 数据/分类文档/知乎/*.md + 数据/分类文档/公众号/*.md + 数据/分类文档/B站动态/*.md + 数据/分类文档/B站视频/*.md")
 print("总计：", len(items), "条")
