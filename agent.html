@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>树林知识宇宙 Agent 索引</title>
+<style>
+  :root{color-scheme:dark;--bg:#0b1118;--fg:#e7edf3;--muted:#93a1b2;--line:#25303c;--accent:#79d0bd}
+  body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.65 -apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+  header{padding:18px 22px;border-bottom:1px solid var(--line);background:#0e151d;position:sticky;top:0}
+  h1{font-size:18px;margin:0 0 4px}
+  .meta{color:var(--muted);font-size:12px}
+  main{padding:22px;max-width:1120px;margin:0 auto}
+  pre{white-space:pre-wrap;word-break:break-word;margin:0;padding:18px;border:1px solid var(--line);border-radius:8px;background:#0e151d;color:var(--fg)}
+  code{color:var(--accent)}
+  .empty{border:1px dashed var(--line);border-radius:8px;padding:20px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <h1>树林知识宇宙 Agent 索引</h1>
+  <div class="meta" id="meta">加载中...</div>
+</header>
+<main id="out"><div class="empty">正在读取 <code>数据/agent-index.json</code></div></main>
+<script src="./数据/agent-index.js"></script>
+<script>
+const params=new URLSearchParams(location.search);
+const q=(params.get('q')||'').trim().toLowerCase();
+const id=(params.get('id')||'').trim();
+const platform=(params.get('platform')||'all').trim();
+const format=(params.get('format')||'md').trim().toLowerCase();
+const limit=Math.max(1,Math.min(500,parseInt(params.get('limit')||'80',10)||80));
+const out=document.getElementById('out');
+const meta=document.getElementById('meta');
+
+function esc(s){
+  return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function mdText(s){
+  return String(s||'').replace(/\r/g,'').replace(/\n{3,}/g,'\n\n').trim();
+}
+function oneLine(s){
+  return mdText(s).replace(/\n/g,' ').replace(/\|/g,'\\|');
+}
+function itemScore(it){
+  return (it.likes||0)+(it.comments||0)*2+(it.reposts||0)*2;
+}
+function matchItem(it){
+  if(id) return it.id===id;
+  if(platform!=='all' && it.sys!==platform) return false;
+  if(!q) return true;
+  return String(it.search_text||'').toLowerCase().includes(q);
+}
+function agentUrl(it){
+  const u=new URL(location.href);
+  u.search='';
+  u.searchParams.set('id',it.id);
+  u.searchParams.set('format','md');
+  return u.href;
+}
+function toMarkdown(index, items){
+  const title=id ? `# 树林知识宇宙 Agent 单条索引` : `# 树林知识宇宙 Agent 关键词索引`;
+  const lines=[
+    title,
+    '',
+    `- 查询关键词：${q || '无'}`,
+    `- 平台范围：${platform}`,
+    `- 命中数量：${items.length}`,
+    `- 数据总量：${index.meta.total}`,
+    `- 数据日期：${index.meta.updated}`,
+    ''
+  ];
+  items.forEach((it,i)=>{
+    lines.push(`## ${i+1}. ${oneLine(it.title)}`);
+    lines.push('');
+    lines.push(`- Agent ID：${it.id}`);
+    lines.push(`- 平台：${it.platform}`);
+    lines.push(`- 分类：${it.group_name}`);
+    lines.push(`- 类型：${it.content_type || it.type}`);
+    if(it.account) lines.push(`- 账号：${it.account}`);
+    if(it.date) lines.push(`- 日期：${it.date}`);
+    if(it.url) lines.push(`- 原文：${it.url}`);
+    if(it.source_doc) lines.push(`- 分类文档：${it.source_doc}`);
+    lines.push(`- 单条调用：${agentUrl(it)}`);
+    lines.push('');
+    lines.push(mdText(it.body || it.excerpt || '（无正文摘录）'));
+    lines.push('');
+  });
+  if(!items.length) lines.push('（没有命中结果。）','');
+  return lines.join('\n');
+}
+function renderText(text){
+  out.innerHTML=`<pre>${esc(text)}</pre>`;
+}
+function showIndex(index){
+  let items=index.items.filter(matchItem).sort((a,b)=>itemScore(b)-itemScore(a)).slice(0,limit);
+  meta.textContent=`q=${q||'无'} ｜ platform=${platform} ｜ format=${format} ｜ limit=${limit}`;
+  if(format==='json'){
+    renderText(JSON.stringify({
+      query:q,
+      platform,
+      limit,
+      count:items.length,
+      total:index.meta.total,
+      items:items.map(it=>({...it,agent_url:agentUrl(it)}))
+    },null,2));
+  }else{
+    renderText(toMarkdown(index,items));
+  }
+}
+function loadIndex(){
+  if(window.AGENT_INDEX) return Promise.resolve(window.AGENT_INDEX);
+  return fetch('数据/agent-index.json').then(r=>{
+    if(!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  });
+}
+loadIndex()
+  .then(showIndex)
+  .catch(err=>{
+    meta.textContent='读取失败';
+    out.innerHTML=`<div class="empty">无法读取 Agent 索引：${esc(err.message)}<br>如果是双击文件打开，请确认 <code>数据/agent-index.js</code> 已生成。</div>`;
+  });
+</script>
+</body>
+</html>
