@@ -421,7 +421,7 @@
     font-family:inherit;cursor:pointer;
   }
   #detail a.link{
-    background:linear-gradient(180deg,#eef3ff,#cfdcff);color:#101521;border:0;
+    background:var(--jade);color:#06130d;border:0;font-weight:700;
   }
   #detail button.copy{
     background:rgba(255,255,255,.045);color:var(--txt);border:1px solid var(--hair);
@@ -1088,8 +1088,8 @@
     background:linear-gradient(90deg,rgba(216,179,103,.14),rgba(47,214,163,.075));
   }
   #detail .badge{
-    background:linear-gradient(180deg,#f7e7a7,var(--aa-gold))!important;
-    color:#111521!important;
+    background:var(--jade)!important;
+    color:#06130d!important;
   }
   #detail .ex{
     box-shadow:inset 3px 0 0 rgba(216,179,103,.46),inset 0 1px 0 rgba(255,255,255,.055);
@@ -1570,7 +1570,7 @@ DATA.items.forEach(it=>{counts[it.group]=(counts[it.group]||0)+1; sysCounts[it.s
 
 // active = 当前显示的分组 id 集合
 const active = new Set(GROUPS.filter(g=>counts[g.id]).map(g=>g.id));
-const foldedSystems = new Set(['zhihu']);
+const foldedSystems = new Set();
 const DEFAULT_EXPANDED_TREE_NODES = ['sys-zhihu','sys-mp','sys-bili','sys-biliv'];
 const expandedTreeNodes = new Set(DEFAULT_EXPANDED_TREE_NODES);
 let curView = 'tree';
@@ -2154,9 +2154,9 @@ function makeLeaf(it, color, opts={}){
     id:it._id,
     name:leafName(it, opts),
     value:it.likes,_ref:it,
-    symbolSize:5.5,
-    itemStyle:{color:'#9aa6b6',borderColor:'rgba(255,255,255,.20)',borderWidth:.7},
-    label:{color:'#e5edf7',fontSize:11.5,width:opts.date?210:240,overflow:'truncate',ellipsis:'…',triggerEvent:true}
+    symbolSize:4.5,
+    itemStyle:{color:'#6e6e72',borderColor:'rgba(255,255,255,.16)',borderWidth:.6},
+    label:{color:'#d2d2d6',fontSize:11.5,width:opts.date?300:320,overflow:'truncate',ellipsis:'…',triggerEvent:true}
   };
 }
 function branchNode(key, node, collapsedByDefault=true){
@@ -2164,15 +2164,18 @@ function branchNode(key, node, collapsedByDefault=true){
   node._nodeKey=key;
   node.label={...(node.label||{}),triggerEvent:true};
   node.collapsed=collapsedByDefault && !expandedTreeNodes.has(key);
+  const isSys=String(key).startsWith('sys-');
+  const isChunk=String(key).startsWith('chunk-');
   if(!node.symbolSize){
-    node.symbolSize=String(key).startsWith('sys-') ? 14 : (String(key).startsWith('chunk-') ? 8 : 10);
+    node.symbolSize=isSys ? 13 : (isChunk ? 7 : 8);   // 层级阶梯：系统>类型/分组>分页组
   }
   const col=node.itemStyle && node.itemStyle.color;
   node.itemStyle={
     ...(node.itemStyle||{}),
-    borderWidth:String(key).startsWith('sys-') ? 2 : 1.2,
-    shadowBlur:String(key).startsWith('sys-') ? 14 : 7,
-    shadowColor:softNodeShadow(col, String(key).startsWith('sys-') ? .24 : .16)
+    borderColor: isSys ? '#2fd6a3' : ((node.itemStyle&&node.itemStyle.borderColor)||col),  // 系统层=玉绿环
+    borderWidth: isSys ? 2.4 : 1.1,
+    shadowBlur: isSys ? 12 : 4,
+    shadowColor: softNodeShadow(isSys ? '#2fd6a3' : col, isSys ? .28 : .14)
   };
   node.lineStyle={color:'rgba(120,120,128,.42)',width:1.05,curveness:.20,...(node.lineStyle||{})};
   return node;
@@ -2278,7 +2281,7 @@ function buildSearchTree(items){
     const sysNode={name:`${s.emoji} ${s.name} (${sysItems.length})`,
       symbolSize:14,
       itemStyle:{color:s.color,borderColor:s.color,borderWidth:2,shadowBlur:14,shadowColor:softNodeShadow(s.color,.22)},lineStyle:{color:'rgba(120,120,128,.46)'},
-      label:{color:'#fbfdff',fontWeight:'bold',fontSize:13},children:[]};
+      label:{color:'#fbfdff',fontWeight:'bold',fontSize:14},children:[]};
     searchSourceNodesForSystem(s, sysItems).forEach(src=>{
       sysNode.children.push({
         name:`${src.name} (${src.items.length})`,
@@ -2293,13 +2296,13 @@ function buildSearchTree(items){
 }
 function buildTree(itemsArg){
   let items=itemsArg || visibleItems();
-  const root={name:'树林知识宇宙',children:[],symbolSize:17,
-    itemStyle:{color:'#2fd6a3',borderColor:'rgba(255,255,255,.34)',borderWidth:2.2,shadowBlur:18,shadowColor:'rgba(47,214,163,.24)'},
-    label:{position:'right',align:'left',color:'#fbfdff',fontWeight:'bold',fontSize:14.5,width:150,overflow:'truncate',triggerEvent:true}};
+  const root={name:'树林知识宇宙',children:[],symbolSize:19,
+    itemStyle:{color:'#2fd6a3',borderColor:'rgba(47,214,163,.45)',borderWidth:2.4,shadowBlur:22,shadowColor:'rgba(47,214,163,.32)'},
+    label:{position:'right',align:'left',color:'#ffffff',fontWeight:'bold',fontSize:17,width:180,overflow:'truncate',triggerEvent:true}};
   SYS.forEach(s=>{
     const sysNode=branchNode(`sys-${s.id}`, {name:`${s.emoji} ${s.name} (${sysCounts[s.id]||0})`,
       itemStyle:{color:s.color,borderColor:s.color},lineStyle:{color:'rgba(120,120,128,.46)'},
-      label:{color:'#fbfdff',fontWeight:'bold',fontSize:13},_sys:s.id,children:[]});
+      label:{color:'#fbfdff',fontWeight:'bold',fontSize:14},_sys:s.id,children:[]});
     if(s.id==='mp'){
       const mpItems = items.filter(it=>it.sys==='mp');
       if(!mpItems.length) return;
