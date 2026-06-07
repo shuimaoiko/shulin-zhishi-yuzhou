@@ -412,7 +412,7 @@
     box-shadow:inset 0 1px 0 rgba(255,255,255,.055)}
   #detail .tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
   #detail .tg{font-size:11px;padding:4px 8px;border-radius:6px;border:1px solid var(--line);color:var(--dim)}
-  #detail .actions{display:none;margin-top:18px;gap:8px;flex-wrap:wrap}
+  #detail .actions{display:none;margin:2px 0 18px;gap:8px;flex-wrap:wrap}
   #detail .actions.open{display:flex}
   #detail a.link,
   #detail button.copy{
@@ -1460,12 +1460,12 @@
       <div class="db">
         <h2 id="d-title"></h2>
         <div class="stats" id="d-stats"></div>
-        <div class="ex" id="d-ex"></div>
-        <div class="tags" id="d-tags"></div>
         <div class="actions" id="d-actions">
           <a class="link" id="d-link" target="_blank" rel="noopener">在知乎打开 ↗</a>
           <button class="copy" id="d-copy" type="button">复制链接</button>
         </div>
+        <div class="ex" id="d-ex"></div>
+        <div class="tags" id="d-tags"></div>
       </div>
     </div>
   </main>
@@ -2679,7 +2679,9 @@ function showDetail(it){
   if(it.url){
     actions.classList.add('open');
     link.href=it.url;
-    link.textContent=it.sys==='mp' ? '阅读公众号原文 ↗' : (it.sys==='bili' ? '在 B站打开 ↗' : '在知乎打开 ↗');
+    link.textContent=it.sys==='mp' ? '阅读公众号原文 ↗'
+      : (it.sys==='bili' ? '在 B站打开 ↗'
+      : (it.sys==='biliv' ? '在 B站看视频 ↗' : '在知乎打开 ↗'));
   }else{
     actions.classList.remove('open');
     link.removeAttribute('href');
