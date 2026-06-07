@@ -1200,6 +1200,40 @@
   #zoomctl button.iconctl{ flex:0 0 auto; width:34px; min-width:34px; background:transparent; color:var(--muted); border-color:transparent; }
   #zoomctl button.iconctl:hover{ background:rgba(255,255,255,.06); color:var(--txt); border-color:var(--hair); }
 
+  /* ====== 收纳折叠：左侧导航 / 右下控制台（DESIGN.md §6.2）====== */
+  .panel-fold{
+    appearance:none; border:1px solid var(--hair); background:transparent; color:var(--muted);
+    width:24px; height:24px; border-radius:var(--r-sm); cursor:pointer; font-size:15px; line-height:1;
+    display:flex; align-items:center; justify-content:center; padding:0;
+    transition:background .15s ease,color .15s ease,border-color .15s ease;
+  }
+  .panel-fold:hover{ background:rgba(255,255,255,.06); color:var(--txt); border-color:rgba(79,185,169,.34); }
+  /* 左栏折叠按钮：钉在导航标题右上角 */
+  .legend-head{ position:sticky; }
+  #legendToggle{ position:absolute; top:14px; right:0; }
+  /* 折叠态：隐藏左栏 + 左缘显示重开条（画布随后 resize 铺满）*/
+  #app.nav-collapsed #legend{ display:none; }
+  .legend-reopen{
+    display:none; position:absolute; left:0; top:50%; transform:translateY(-50%); z-index:16;
+    width:18px; height:56px; border:1px solid var(--hair); border-left:0;
+    border-radius:0 var(--r-sm) var(--r-sm) 0; background:var(--panel); color:var(--dim);
+    cursor:pointer; align-items:center; justify-content:center; font-size:14px; padding:0;
+    box-shadow:var(--shadow-soft);
+  }
+  .legend-reopen:hover{ color:var(--txt); background:var(--panel2); border-color:rgba(79,185,169,.34); }
+  #app.nav-collapsed .legend-reopen{ display:flex; }
+  /* 控制台折叠态：隐藏面板 + 右下显示重开圆钮 */
+  #app.tools-collapsed #zoomctl{ display:none; }
+  .tools-reopen{
+    display:none; position:absolute; right:16px; bottom:18px; z-index:15;
+    width:38px; height:38px; border-radius:var(--r-md); border:1px solid var(--hair);
+    background:rgba(13,17,24,.9); color:var(--dim); cursor:pointer; font-size:17px; padding:0;
+    align-items:center; justify-content:center; box-shadow:var(--shadow-soft); backdrop-filter:blur(14px);
+  }
+  .tools-reopen:hover{ color:var(--txt); border-color:rgba(79,185,169,.34); }
+  #app.tools-collapsed .tools-reopen{ display:flex; }
+  main.list-mode .tools-reopen{ display:none; }
+
   /* 列表：去标题渐变下划线 / 工具条与卡片渐变底；保留 hover 左细条 */
   .list-head h2::after{ display:none; }
   .list-tools{ background:rgba(255,255,255,.03); box-shadow:none; }
@@ -1237,6 +1271,7 @@
   <main>
     <div id="legend">
       <div class="legend-head">
+        <button id="legendToggle" class="panel-fold" title="收起导航" aria-label="收起导航">‹</button>
         <h3>来源导航</h3>
         <p>按平台、账号与内容类型控制当前视图。</p>
       </div>
@@ -1247,6 +1282,8 @@
       <div id="chips"></div>
     </div>
     <div id="chart"></div>
+    <button id="legendReopen" class="legend-reopen" title="展开导航" aria-label="展开导航">›</button>
+    <button id="zoomReopen" class="tools-reopen" title="展开控制台" aria-label="展开控制台">⌃</button>
     <div id="listView">
       <div class="list-shell">
         <div class="list-head">
@@ -1301,6 +1338,7 @@
         <span class="zr-div" aria-hidden="true"></span>
         <button id="zreset" class="iconctl" title="重置视图">⟲</button>
         <button id="helpBtn" class="iconctl" title="帮助中心">?</button>
+        <button id="zoomToggle" class="iconctl" title="收起控制台" aria-label="收起控制台">⌄</button>
       </div>
     </div>
     <div id="detail">
@@ -3046,6 +3084,19 @@ document.getElementById('zreset').onclick = ()=>{
 };   // 重置：缩放到展示当前已展开内容
 document.getElementById('expandAllBtn').onclick = expandCurrentTree;
 document.getElementById('collapseAllBtn').onclick = collapseCurrentTree;
+
+// 收纳折叠：左侧导航 / 右下控制台（DESIGN.md §6.2）
+const appEl = document.getElementById('app');
+function resizeChartSoon(){
+  requestAnimationFrame(()=>{ try{ chart.resize(); }catch(e){} });
+  setTimeout(()=>{ try{ chart.resize(); }catch(e){} }, 80);
+}
+function setNavCollapsed(v){ appEl.classList.toggle('nav-collapsed', v); resizeChartSoon(); }
+function setToolsCollapsed(v){ appEl.classList.toggle('tools-collapsed', v); }
+document.getElementById('legendToggle').onclick = ()=>setNavCollapsed(true);
+document.getElementById('legendReopen').onclick = ()=>setNavCollapsed(false);
+document.getElementById('zoomToggle').onclick   = ()=>setToolsCollapsed(true);
+document.getElementById('zoomReopen').onclick   = ()=>setToolsCollapsed(false);
 
 // 入场提示短暂显示；详细操作放到帮助中心
 setTimeout(()=>document.getElementById('hint').classList.add('hide'), 4200);
