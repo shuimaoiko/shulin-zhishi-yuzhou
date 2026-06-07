@@ -1328,6 +1328,21 @@
     .hall .hall-go{ display:none; }
   }
   @media (prefers-reduced-motion:reduce){ .cover-inner{ animation:none; } .cover{ transition:none; } }
+
+  /* ===== v4 · 标题质感（编辑级层级，玉绿点睛；只升层级不加装饰）===== */
+  header h1{ font-size:25px; font-weight:800; letter-spacing:-.012em; }
+  header h1 .brand-accent{ color:var(--jade); }
+  header h1 .byline{ font-size:13px; font-weight:500; color:#86868a; }
+  .legend-head h3{ font-size:15px; font-weight:780; letter-spacing:.02em; color:#e8e8ea; }
+  .legend-head p{ color:#76767a; }
+  .list-head h2{ position:relative; font-size:clamp(26px,3vw,36px); font-weight:800; letter-spacing:-.02em; line-height:1.04; color:#fff; }
+  .list-head h2::after{ display:block; content:""; width:40px; height:2px; margin-top:14px; background:var(--jade); border-radius:2px; }
+  .list-head p{ font-size:13px; color:#8a8a8e; }
+  #detail h2, #d-title{ font-size:23px; font-weight:800; letter-spacing:-.015em; line-height:1.22; }
+  .index-dialog h2, #indexTitle{ font-size:23px; font-weight:800; letter-spacing:-.012em; }
+  .list-count b{ font-size:26px; font-weight:800; letter-spacing:-.01em; }
+  .list-count span{ letter-spacing:.1em; text-transform:uppercase; font-size:10px; color:#76767a; }
+  .viewmode>span, .mpmode>span{ color:#76767a; letter-spacing:.06em; }
 </style>
 </head>
 <body>
@@ -1350,7 +1365,7 @@
   </div>
   <header>
     <div class="brand">
-      <h1><span class="mark"></span> 树林知识宇宙 <span class="byline">· 树成林</span></h1>
+      <h1><span class="mark"></span> 树林<span class="brand-accent">知识宇宙</span> <span class="byline">· 树成林</span></h1>
       <div class="sub" id="subtitle"></div>
       <div class="brand-meta" id="brandMeta"></div>
     </div>
