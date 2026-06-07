@@ -386,9 +386,11 @@ if os.path.isfile(BILI_VIDEO_SRC):
         um = re.search(r"🔗\s*\*\*链接:\*\*\s*(\S+)", blk)
         bm = re.search(r"`(BV\w+)`", blk)
         pm = re.search(r"🕐\s*\*\*发布时间:\*\*\s*([0-9:\s\-]+)", blk)
+        dm = re.search(r"📋\s*\*\*简介:\*\*\s*(.+)", blk)
         url  = um.group(1).strip() if um else ""
         bvid = bm.group(1) if bm else ""
         date = pm.group(1).strip() if pm else ""
+        desc = dm.group(1).strip() if dm else ""
         like = comment = repost = 0
         sm = re.search(r"📊\s*\*\*数据:\*\*\s*(.+)", blk)
         if sm:
@@ -416,7 +418,8 @@ if os.path.isfile(BILI_VIDEO_SRC):
             body_text = f"{title}\n{copy_text}"
         else:
             body_text = copy_text or title
-        group = classify_bv(title, body_text)
+        # 用「标题+简介」分类(主题信号干净)，不用全文转写——否则学习类关键词会在每篇都命中、塌成一类
+        group = classify_bv(title, desc)
         items.append({
             "type": "B站视频", "sys": "biliv", "group": group,
             "platform": "B站", "idx": idx,
