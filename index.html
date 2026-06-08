@@ -1357,7 +1357,7 @@
       <div class="cover-hero">
         <h1 class="cover-title">树林<span class="cover-title-accent">知识宇宙</span></h1>
         <div class="cover-rule"></div>
-        <p class="cover-sub" id="coverSub">1,256 件藏品 · 四系统知识宇宙</p>
+        <p class="cover-sub" id="coverSub">2,413 件藏品 · 五系统知识宇宙</p>
       </div>
       <div class="cover-halls" id="coverHalls"></div>
       <button class="cover-enter" id="coverEnter" type="button">进入全部藏品<span class="ce-arrow">→</span></button>
@@ -1491,6 +1491,7 @@
           <button data-export-sys="mp" type="button">公众号</button>
           <button data-export-sys="bili" type="button">B站动态</button>
           <button data-export-sys="biliv" type="button">B站视频</button>
+          <button data-export-sys="pyq" type="button">朋友圈</button>
         </div>
         <div class="index-status" id="indexModalStatus"></div>
         <div class="agent-callout">
@@ -1511,6 +1512,7 @@ const SYS = DATA.systems;
 const GROUPS = DATA.groups;
 const GMAP = Object.fromEntries(GROUPS.map((g,i)=>[g.id,{...g,index:i}]));
 const SYSMAP = Object.fromEntries(SYS.map((s,i)=>[s.id,{...s,index:i}]));
+const SYS_CN = (['零','一','二','三','四','五','六','七','八','九','十'][SYS.length] || SYS.length) + '系统';
 const MP_TYPES = DATA.mp_types || [];
 const MPTMAP = Object.fromEntries(MP_TYPES.map((t,i)=>[t.id,{...t,index:i}]));
 const BILI_GROUPS = GROUPS.filter(g=>g.sys==='bili');
@@ -1550,7 +1552,7 @@ if(brandMetaEl){
     const n = DATA.items.filter(it=>it.sys===s.id).length;
     return `<span>${s.name} ${n.toLocaleString()}</span>`;
   }).join('');
-  brandMetaEl.innerHTML = `<span>四系统档案</span><span>${DATA.meta.total.toLocaleString()} 条内容</span>${sysBits}`;
+  brandMetaEl.innerHTML = `<span>${SYS_CN}档案</span><span>${DATA.meta.total.toLocaleString()} 条内容</span>${sysBits}`;
 }
 
 // give each item a stable id
@@ -1650,6 +1652,7 @@ function systemLegendName(s){
   if(s.id==='zhihu') return `知乎 · 主题`;
   if(s.id==='bili') return `B站动态 · 类型`;
   if(s.id==='biliv') return `B站视频 · 主题`;
+  if(s.id==='pyq') return `朋友圈 · 主题`;
   return `${s.name}`;
 }
 function buildLegend(){
@@ -2664,6 +2667,9 @@ function showDetail(it){
     const mt=MPTMAP[it.mp_type];
     stats+=`<span style="color:${mt.color}">${mt.emoji} ${mt.name}</span>`;
   }
+  if(it.sys==='pyq' && it.pyq_form_name){
+    stats+=`<span>${it.pyq_form_name}</span>`;
+  }
   document.getElementById('d-stats').innerHTML=stats;
   document.getElementById('d-ex').textContent=(it.body||it.excerpt||'（无正文）');
   // 关联标签：仅知乎跨维度显示（公众号 tag 即账号本身，略）
@@ -3209,7 +3215,7 @@ document.getElementById('zoomReopen').onclick   = ()=>setToolsCollapsed(false);
   if(!cover) return;
   const hallsEl=document.getElementById('coverHalls');
   const subEl=document.getElementById('coverSub');
-  if(subEl) subEl.textContent = `${(DATA.meta.total||0).toLocaleString()} 件藏品 · 四系统知识宇宙`;
+  if(subEl) subEl.textContent = `${(DATA.meta.total||0).toLocaleString()} 件藏品 · ${SYS_CN}知识宇宙`;
   SYS.forEach((s,i)=>{
     const n=sysCounts[s.id]||0;
     const b=document.createElement('button');

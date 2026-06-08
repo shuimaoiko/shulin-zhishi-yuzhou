@@ -27,6 +27,7 @@ THINK_SRC = "/Users/水猫/文档/树林/知乎/树成林-想法合集.md"
 MP_ROOT   = "/Users/水猫/文档/树林/公众号"
 BILI_SRC  = "/Users/水猫/文档/树林/b站动态/树林同学_B站动态_完整版(1).md"
 BILI_VIDEO_SRC = "/Users/水猫/文档/树林/b站视频/树林同学_B站视频文案.md"
+MOMENTS_SRC = "/Users/水猫/文档/树林/树林朋友圈/timeline.json"
 
 # 公众号账号：(id, 名称, emoji, 颜色, 文件夹)
 MP_ACCOUNTS = [
@@ -75,6 +76,36 @@ BV_CATS = [
 ]
 BV_ORDER = [c[0] for c in BV_CATS]
 BV_META = {c[0]: {"id": c[0], "name": c[1], "emoji": c[2], "color": c[3]} for c in BV_CATS}
+
+# ---- 朋友圈 主题分组（归纳分类，关键词命中；顺序即优先级，生活·日常兜底）----
+PYQ_CATS = [
+    ("pyq_study",  "学习·高考", "🎯", "#4361EE", ["高考","高三","高二","高一","复读","学习","复习","考试","提分","刷题","做题","数学","英语","物理","化学","生物","作文","背书","知识","上岸","录取","分数","学渣","学霸","学生","上课","期末","考研","成绩","老师","教育","出题","课程","训练营","成长营"]),
+    ("pyq_create", "创作·表达", "💡", "#FFB703", ["公众号","写作","文字","表达","创作","视频号","直播","见面会","粉丝","读者","作品","更新","文章","内容","出书","采访","合作","树成林","对木","老王","项目","商业","赚钱","流量","ip","品牌","媒体","写下","录","发朋友圈","安利"]),
+    ("pyq_love",   "情感·关系", "❤️", "#E63946", ["爸","妈","父母","家人","阿嬷","恋","喜欢一个人","想念","姜禹","哥哥","姐姐","在一起","想你","拥抱","陪我","陪伴","朋友","闺蜜","亲爱","暗恋","分手","告白","女孩","男孩","爱人","结婚","婚礼","小孩","孩子","宝贝","爱你","爱我"]),
+    ("pyq_music",  "音乐·歌单", "🎵", "#9D4EDD", ["好听","歌","音乐","声音","旋律","循环","单曲","翻译","drunk","唱","这首","专辑","耳机","bgm","纯音乐","刘聪","旋","听这"]),
+    ("pyq_mind",   "心态·情绪", "🧠", "#F77F00", ["难受","焦虑","emo","难过","情绪","崩溃","压力","治愈","哭","丧","累","平静","勇气","害怕","紧张","委屈","破防","内耗","心态","释怀","痛苦","开心","快乐","幸福","温暖","温柔","感动","舒服","释然","坦然","心安","治好"]),
+    ("pyq_life",   "人生·认知", "🌱", "#588157", ["人生","世界","成长","认知","选择","自由","众生","意义","相信","改变","清醒","成熟","价值","道理","命运","坚持","努力","勇敢","格局","热爱","活着","成为","时间","年轻","配得","值得","珍惜","长大","记得","明白","懂得","人间","信念","信仰","活成"]),
+    ("pyq_daily",  "生活·日常", "🪐", "#8D99AE", []),  # 兜底：吃喝玩乐 / 生活切片
+]
+PYQ_ORDER = [c[0] for c in PYQ_CATS]
+
+# 朋友圈 内容形态（辅轴：按微信 content_type 客观归类）
+PYQ_FORMS = [
+    ("text",  "纯文本",   "📝", "#79B8FF"),
+    ("photo", "图文",     "🖼️", "#67B8A7"),
+    ("video", "视频",     "🎬", "#E9C46A"),
+    ("music", "音乐分享", "🎵", "#9D4EDD"),
+    ("link",  "链接分享", "🔗", "#9DA6C8"),
+    ("live",  "直播",     "📍", "#EF476F"),
+    ("note",  "笔记·其他","📒", "#B9855B"),
+]
+PYQ_FORM_META = {f[0]: {"id": f[0], "name": f[1], "emoji": f[2], "color": f[3]} for f in PYQ_FORMS}
+# 微信 content_type -> 形态
+CT_TO_FORM = {
+    2: "text", 1: "photo", 15: "video", 28: "video",
+    42: "music", 5: "link", 3: "link", 54: "live",
+    34: "note", 4: "note", 7: "note",
+}
 
 items = []
 audit_stats = collections.Counter()
@@ -434,17 +465,86 @@ if os.path.isfile(BILI_VIDEO_SRC):
 else:
     print("⚠️ 缺少 B站视频文件：", BILI_VIDEO_SRC)
 
+# ================================================================ 朋友圈（微信 Moments）
+PYQ_EMOJI_RE = re.compile(r"\[[一-鿿A-Za-z]{1,4}\]")   # 微信表情符 [微笑]/[doge]/[OK]
+
+def clean_moment_text(raw):
+    t = PYQ_EMOJI_RE.sub("", raw or "")
+    t = re.sub(r"[ \t]+", " ", t)
+    t = re.sub(r"\n{3,}", "\n\n", t).strip()
+    return t
+
+def moment_title(text, idx):
+    one = re.sub(r"\s+", " ", text).strip()
+    first = re.split(r"[。！？!?\n]", one)[0].strip()
+    if not first:
+        first = one
+    return (first[:30] or f"朋友圈 #{idx}")
+
+def classify_moment(text, form):
+    hay = (text or "").lower()
+    for cid, _name, _emoji, _color, kws in PYQ_CATS:
+        if kws and any(k.lower() in hay for k in kws):
+            return cid
+    # 无主题关键词命中：小程序基本是音乐分享，归音乐；否则生活·日常兜底
+    if form == "music":
+        return "pyq_music"
+    return "pyq_daily"
+
+if os.path.isfile(MOMENTS_SRC):
+    with open(MOMENTS_SRC, encoding="utf-8") as f:
+        moments_raw = json.load(f).get("posts", [])
+    seen_moment = set()
+    pyq_cnt = 0
+    # 时间正序解析、去重保留最早，再统一倒序展示
+    for idx, p in enumerate(sorted(moments_raw, key=lambda x: x.get("create_time", 0))):
+        raw = (p.get("content_desc") or "").strip()
+        if not raw:                                   # 数据审核：空文本无信息量
+            audit_stats["pyq_removed_empty"] += 1
+            continue
+        clean = clean_moment_text(raw)
+        if not clean:                                 # 纯表情符，清洗后为空
+            audit_stats["pyq_removed_emoji_only"] += 1
+            continue
+        dedup_key = re.sub(r"\s+", "", clean)
+        if dedup_key in seen_moment:                  # 精确去重
+            audit_stats["pyq_removed_duplicate"] += 1
+            continue
+        seen_moment.add(dedup_key)
+        ct = p.get("content_type")
+        form = CT_TO_FORM.get(ct, "note")
+        group = classify_moment(clean, form)
+        date = (p.get("create_time_str") or "")[:10]
+        media = p.get("media") or []
+        fm = PYQ_FORM_META[form]
+        items.append({
+            "type": "朋友圈", "sys": "pyq", "group": group,
+            "platform": "微信", "pyq_form": form, "pyq_form_name": fm["name"],
+            "idx": idx, "title": moment_title(clean, idx), "url": "",
+            "date": date, "create_time": p.get("create_time", 0),
+            "likes": 0, "collects": 0,
+            "has_media": bool(media), "media_count": len(media),
+            "excerpt": re.sub(r"\s+", " ", clean)[:160], "body": clean[:1200],
+            "tags": [group],
+        })
+        pyq_cnt += 1
+    print("朋友圈：", collections.Counter(it["group"] for it in items if it["sys"] == "pyq"), f"共{pyq_cnt}")
+else:
+    print("⚠️ 缺少 朋友圈文件：", MOMENTS_SRC)
+
 # ================================================================ 系统/分组元数据
 SYSTEMS = [
     {"id": "zhihu", "name": "知乎",   "emoji": "📕", "color": "#4361EE"},
     {"id": "mp",    "name": "公众号", "emoji": "📗", "color": "#2A9D8F"},
     {"id": "bili",  "name": "B站动态", "emoji": "📡", "color": "#79B8FF"},
     {"id": "biliv", "name": "B站视频", "emoji": "🎬", "color": "#E9C46A"},
+    {"id": "pyq",   "name": "朋友圈", "emoji": "📘", "color": "#b0859a"},
 ]
 GROUPS = [{"id": c[0], "sys": "zhihu", "name": c[1], "emoji": c[2], "color": c[3]} for c in CATS] \
        + [{"id": a[0], "sys": "mp",    "name": a[1], "emoji": a[2], "color": a[3]} for a in MP_ACCOUNTS] \
        + [{"id": g[0], "sys": "bili",  "name": g[1], "emoji": g[2], "color": g[3]} for g in BILI_GROUPS] \
-       + [{"id": c[0], "sys": "biliv", "name": c[1], "emoji": c[2], "color": c[3]} for c in BV_CATS]
+       + [{"id": c[0], "sys": "biliv", "name": c[1], "emoji": c[2], "color": c[3]} for c in BV_CATS] \
+       + [{"id": c[0], "sys": "pyq",   "name": c[1], "emoji": c[2], "color": c[3]} for c in PYQ_CATS]
 GROUP_META = {g["id"]: g for g in GROUPS}
 GROUP_ORDER = [g["id"] for g in GROUPS]
 
@@ -465,12 +565,20 @@ with open(os.path.join(ROOT, "_build", "stats.txt"), "w", encoding="utf-8") as f
     for tid, name, emoji, _color, _kws in MP_TYPES:
         f.write(f"    {emoji} {name:4s} : {mp_type_cnt.get(tid,0)}\n")
     f.write("\n")
+    pyq_form_cnt = collections.Counter(it.get("pyq_form") for it in items if it["sys"] == "pyq")
+    f.write("朋友圈内容形态（辅轴）\n")
+    for fid, name, emoji, _color in PYQ_FORMS:
+        f.write(f"    {emoji} {name:6s} : {pyq_form_cnt.get(fid,0)}\n")
+    f.write("\n")
     f.write("数据审核 Agent\n")
     if audit_stats:
         reason_names = {
             "bili_removed_empty_after_media_strip": "B站：剔除纯图片/媒体占位/空内容",
             "bili_removed_none_body": "B站：剔除 None 空内容",
             "bili_removed_pure_image": "B站：剔除纯图片",
+            "pyq_removed_empty": "朋友圈：剔除空文本",
+            "pyq_removed_emoji_only": "朋友圈：剔除纯表情符",
+            "pyq_removed_duplicate": "朋友圈：剔除精确重复",
         }
         for key, cnt in sorted(audit_stats.items()):
             f.write(f"    {reason_names.get(key,key)} : {cnt}\n")
@@ -484,13 +592,14 @@ print(open(os.path.join(ROOT, "_build", "stats.txt"), encoding="utf-8").read())
 data = {
     "meta": {
         "title": "树林知识宇宙",
-        "subtitle": "树成林 · 知乎 + 公众号 + B站动态 + B站视频全集",
+        "subtitle": "树成林 · 知乎 + 公众号 + B站动态 + B站视频 + 朋友圈全集",
         "total": len(items),
         "crawl_date": "2026-06-06",
     },
     "systems": SYSTEMS,
     "groups": GROUPS,
     "mp_types": [MP_TYPE_META[t[0]] for t in MP_TYPES],
+    "pyq_forms": [PYQ_FORM_META[f[0]] for f in PYQ_FORMS],
     "items": items,
 }
 DATA_ROOT = os.path.join(ROOT, "数据")
@@ -515,6 +624,8 @@ def source_doc_path(it):
         return f"数据/分类文档/B站动态/{g['emoji']}{g['name']}.md"
     if it.get("sys") == "biliv":
         return f"数据/分类文档/B站视频/{g['emoji']}{g['name'].replace('·','-')}.md"
+    if it.get("sys") == "pyq":
+        return f"数据/分类文档/朋友圈/{g['emoji']}{g['name'].replace('·','-')}.md"
     return ""
 
 def agent_search_text(it):
@@ -524,6 +635,7 @@ def agent_search_text(it):
     parts = [
         it.get("title"), it.get("excerpt"), it.get("body"), it.get("type"),
         it.get("account"), it.get("mp_type_name"), it.get("bili_type_name"),
+        it.get("pyq_form_name"),
         it.get("platform"), g.get("name"), s.get("name"), *tag_names
     ]
     return " ".join(str(x) for x in parts if x).lower()
@@ -542,7 +654,7 @@ for i, it in enumerate(items):
         "group": it.get("group", ""),
         "group_name": g.get("name", ""),
         "type": it.get("type", ""),
-        "content_type": it.get("mp_type_name") or it.get("bili_type_name") or it.get("type", ""),
+        "content_type": it.get("mp_type_name") or it.get("bili_type_name") or it.get("pyq_form_name") or it.get("type", ""),
         "account": it.get("account", ""),
         "date": it.get("date", ""),
         "url": it.get("url", ""),
@@ -685,5 +797,22 @@ for g in GROUPS:
             ml = f"*{it.get('date','')}* ｜ ❤️ {it.get('likes',0):,} · 💬 {it.get('comments',0):,} · 🔄 {it.get('reposts',0):,}"
             f.write(ml + "\n\n" + it["excerpt"] + ("…" if len(it["excerpt"]) >= 150 else "") + "\n\n---\n\n")
 
-print("已写 数据/分类文档/知乎/*.md + 数据/分类文档/公众号/*.md + 数据/分类文档/B站动态/*.md + 数据/分类文档/B站视频/*.md")
+# 朋友圈：按主题分组，按时间倒序，正文附内容形态（辅轴）
+pdir = os.path.join(DOC_ROOT, "朋友圈"); os.makedirs(pdir, exist_ok=True)
+for g in GROUPS:
+    if g["sys"] != "pyq":
+        continue
+    arr = sorted(by_group.get(g["id"], []), key=lambda x: x.get("create_time", 0), reverse=True)
+    if not arr:
+        continue
+    fn = os.path.join(pdir, f"{g['emoji']}{g['name'].replace('·','-')}.md")
+    with open(fn, "w", encoding="utf-8") as f:
+        f.write(f"# {g['emoji']} {g['name']}\n\n> 共 **{len(arr)}** 条（按时间倒序）｜来源：微信朋友圈\n\n---\n\n")
+        for it in arr:
+            fm = PYQ_FORM_META.get(it.get("pyq_form"), {})
+            f.write(f"### 📘 {it['title']}\n\n")
+            f.write(f"*{it.get('date','')}* ｜ {fm.get('emoji','')} {fm.get('name','')}\n\n")
+            f.write(it["excerpt"] + ("…" if len(it["excerpt"]) >= 150 else "") + "\n\n---\n\n")
+
+print("已写 数据/分类文档/知乎/*.md + 数据/分类文档/公众号/*.md + 数据/分类文档/B站动态/*.md + 数据/分类文档/B站视频/*.md + 数据/分类文档/朋友圈/*.md")
 print("总计：", len(items), "条")
